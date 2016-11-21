@@ -1,0 +1,119 @@
+@import url('http://fonts.googleapis.com/css?family=Hind');
+@import url('font-awesome.min.css');
+
+body{
+  font-family:Hind,serif;
+  background: #D3804A url('../img/wallpaper.jpg') no-repeat center center fixed;
+  background-size: 120% auto;
+}
+h1, h2 { font-weight: 400; margin: 0px; }
+h1{ color:#FF602F; font-size: 24px; }
+h2{ font-size: 16px; margin-top: -10px;}
+a{color:#000;}
+p{ color:#444; font-size: 14px; margin:0px;}
+
+.content{
+  min-width: 450px;
+  min-height: 240px;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  color: #000;
+  background: #FFF;
+}
+.divider{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  border-style: none dashed none none;
+  border-width:2px;
+  border-color: #EEEEEE;
+}
+.shadow{
+  text-align: center;
+  box-shadow: 0px 3px 10px rgba(0 ,0, 0, 0.5);
+  border-radius:3px;
+}
+.side{
+  width: 50%;
+  height: 100%;
+  float:left;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+.middle{
+  position: relative;
+  top: 15%;
+  height: 75%;
+}
+.right{
+  float:right;
+}
+
+.avatar {
+  position: relative;
+  width:100px;
+  height:100px;
+  border-radius: 50%;
+  border-color:#E6E6E6;
+  border-style: solid;
+  border-width:10px;
+  background: url('../img/avatar.png');
+  background-size: 100% auto;
+  margin:auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.miniavatar {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width:25px;
+  height:25px;
+  background: url('../img/lua.png');
+  background-size: 100% auto;
+  border-radius: 50%;
+  box-shadow: 1px 1px 4px rgba(0 ,0, 0, 0.5);
+}
+
+.skills {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: 3px;
+}
+
+.profile { margin: 20px;margin-top: 50px; }
+
+.connect {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  text-align: center;
+  margin: 0px;
+  margin-left: 15px;
+  padding: 0px;
+  width: 50%;
+  letter-spacing: 30px;
+}
+.connect a {
+  text-shadow: 0 0 0px #000;
+  color:FFF;
+}
+
+.connect a:hover {
+transition: text-shadow 1s ease-in-out;
+transition: color 0.2s ease-in-out;
+text-shadow: 0 0 2px #000;
+color:#FFF;
+}
+
+.connect .green { color:#82B541; }
+.connect .blue { color:#3B5998; }
