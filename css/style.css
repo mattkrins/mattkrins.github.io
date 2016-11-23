@@ -1,8 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Hind');
 @import url('font-awesome.min.css');
+@font-face {
+  font-family: 'Hind';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/hind-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Hind'), local('Hind-Regular'),
+       url('../fonts/hind-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/hind-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/hind-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/hind-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/hind-v6-latin-regular.svg#Hind') format('svg'); /* Legacy iOS */
+}
 
 body{
-  font-family:Hind,serif;
+  font-family: Hind, Arial;
   background: #D3804A url('../img/wallpaper.jpg') no-repeat center center fixed;
   background-size: 120% auto;
 }
@@ -108,12 +119,30 @@ p{ color:#444; font-size: 14px; margin:0px;}
   color:FFF;
 }
 
-.connect a:hover {
-transition: text-shadow 1s ease-in-out;
-transition: color 0.2s ease-in-out;
-text-shadow: 0 0 2px #000;
-color:#FFF;
-}
-
 .connect .green { color:#82B541; }
 .connect .blue { color:#3B5998; }
+
+
+.tooltip { position: relative; display: inline-block; cursor: default; }
+.tooltip:hover .tooltiptext { visibility: visible; font-family:Hind, Arial; font-size: 10px;}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+  background-color: rgba(255,255,255,0);
+  color: rgba(255,255,255,0);
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext { 
+  visibility: visible;
+  background-color: rgba(0 ,0, 0, 0.8);
+  transition: background-color 0.1s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  color: #fff;
+}
