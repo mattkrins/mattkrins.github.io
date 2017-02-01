@@ -1,5 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
-body, .badgescard, .firstinfo {
+@import "devicons.min.css";
+body, .badges, .container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +51,7 @@ body {
   animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
 }
 
-.badgescard {
+.badges {
   padding: 10px 20px 5px;
   border-radius: 3px;
   background-color: #ECECEC;
@@ -62,34 +63,34 @@ body {
   bottom: 10px;
   animation: animainfos 0.5s cubic-bezier(0.425, 1.04, 0.47, 1.105) 0.75s forwards;
 }
-.badgescard span {
+.badges span {
   font-size: 1.6em;
   margin: 0px 6px;
   opacity: 0.6;
 }
 
-.firstinfo {
+.container {
   flex-direction: row;
   z-index: 2;
   position: relative;
 }
-.firstinfo img {
+.container img {
   border-radius: 50%;
   width: 120px;
   height: 120px;
 }
-.firstinfo .profileinfo {
+.container .profile {
   padding: 0px 20px;
 }
-.firstinfo .profileinfo h1 {
+.container .profile h1 {
   font-size: 1.8em;
 }
-.firstinfo .profileinfo h3 {
+.container .profile h3 {
   font-size: 1.2em;
   color: #9E5E5E;
   font-style: italic;
 }
-.firstinfo .profileinfo p.bio {
+.container .profile p.description {
   padding: 0px 0px;
   color: #5A5A5A;
   line-height: 1.2;
