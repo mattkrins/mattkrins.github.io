@@ -6,9 +6,7 @@ body, .badges, .container {
   align-items: center;
 }
 
-html {
-  height: 100%;
-}
+html { height: 100%; width:100%; }
 h1, h3 { font-weight: 400; margin: 0px; padding: 0px; }
 a{color:#5A5A5A;text-decoration: none;}
 
@@ -18,8 +16,14 @@ body {
   min-height: 100%;
   font-size: 16px;
   overflow: hidden;
-  background: #D3804A url('../img/wallpaper.jpg') no-repeat center center fixed;
-  background-size: 100% auto;
+  background: #D3804A url('../img/wallpaper.jpg');
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-attachment: fixed;       
+  webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
 }
 
 *, *:before, *:after {
