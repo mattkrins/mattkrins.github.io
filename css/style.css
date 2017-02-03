@@ -14,10 +14,10 @@ h1, h3 { font-weight: 400; margin: 0px; padding: 0px; }
 a{color:#5A5A5A;text-decoration: none;}
 
 body {
+	font-size: 16px;
 	font-family: 'Open Sans', sans-serif;
 	width: 100%;
 	min-height: 100%;
-	font-size: 16px;
 	overflow: hidden;
 	background: #D3804A url('../img/wallpaper.jpg');
 	background-repeat: no-repeat; 
@@ -56,15 +56,15 @@ body {
 }
 
 .badges {
-	padding: 10px 20px 5px;
-	border-radius: 3px;
-	background-color: #ECECEC;
-	width: 480px;
-	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-	position: absolute;
 	z-index: -1;
+	position: absolute;
+	padding: 10px 20px 5px;
+	width: 480px;
 	left: 10px;
 	bottom: 10px;
+	background-color: #ECECEC;
+	border-radius: 3px;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 	animation: animate_badges 0.5s cubic-bezier(0.425, 1.04, 0.47, 1.105) 0.75s forwards;
 }
 .badges span {
@@ -103,18 +103,18 @@ body {
 
 .tt { position: relative; display: inline-block; }
 .tt	i {
-		visibility: hidden;
+	visibility: hidden;
 	opacity: 0.9;
-		color: #fff;
+	color: #fff;
 	font-size: 0.5em;
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;
-		width: 100px;
+	width: 100px;
 	top: 130%;
-		left: 50%; 
-		margin-left: -50px;
-		position: absolute;
-		z-index: 1;
+	left: 50%; 
+	margin-left: -50px;
+	position: absolute;
+	z-index: 1;
 	font-style: normal;
 }
 .tt:hover i { visibility: visible; }
