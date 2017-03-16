@@ -17,6 +17,7 @@ function initializeMap() {
 	window.mapBounds = new google.maps.LatLngBounds();
 	window.trafficLayer = new google.maps.TrafficLayer();
 	
+	window.map.addListener('tilesloaded', function() {
 		$(".trafficButton").show();
 	});
 	
