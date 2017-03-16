@@ -11,9 +11,10 @@
 		html { height: 100%; }
 		body { height: 100%; margin: 0; padding: 0; }
 		#map-canvas { height: 100%; margin: 0; padding: 0; }
-		.trafficButton {
+		.on {font-weight:bold;}
+		.button {
 			position: absolute;
-			top: 50px;
+			top: 10px;
 			left: 10px;
 			z-index: 99;
 			padding: 5px;
@@ -23,17 +24,18 @@
 			background:#FFF;
 			border:none;
 			outline:none;
-			color:#333;
-			font-size:12px;
+			color:#222;
+			font-size:11px;
 			box-shadow: 0 1px 6px rgba(0,0,0,0.16);
 			font-family: "Open Sans";
-		}
+		}.button:hover {background:#EBEBEB;}
 		</style>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAHO3Ap6ApSdjcSAbDzYlZupXaEwQa9CN4&libraries=places"></script>
 		<script src="js/jquery-1.9.1.min.js"></script>
 	</head>
 	<body>
-		<div class="trafficButton">Toggle Traffic</div>
+		<div class="button" id="traffic" style="left: 120px;" >Street Traffic</div>
+		<div class="button" id="images" style="left: 210px;" >School Icons</div>
 		<div id="map-canvas"/>
 		<script src="js/index.js"></script>
 	</body>

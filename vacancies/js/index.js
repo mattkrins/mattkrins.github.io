@@ -1,24 +1,84 @@
-var showingTraffic = false;
-$( ".trafficButton" ).click(function() {
-	if (!window.trafficLayer){return;}
-	if (showingTraffic){
+var markers = [];
+$( "#traffic" ).click(function() {
+	if ($(this).hasClass( "on" )){
 		window.trafficLayer.setMap(null);
-		$(this).css("font-weight","normal");
 	}else{
 		window.trafficLayer.setMap(window.map);
-		$(this).css("font-weight","bold");
 	}
-	showingTraffic = !showingTraffic;
+	$(this).toggleClass( "on");
+});
+$( "#images" ).click(function() {
+	var This = $(this);
+	$.each(markers, function (k, marker) {
+		if (marker.place){
+			var photo = getPhoto(marker.place, 32, 32);
+			if (photo){
+				if (This.hasClass( "on" )){
+					marker.icon = 'school.png';
+				}else{
+					marker.icon = photo;
+				}
+				marker.setMap(null);
+				marker.setMap(window.map);
+			}
+		}
+	})
+	$(this).toggleClass( "on");
 });
 
+var Style = [
+  {
+    "featureType": "administrative.land_parcel",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.neighborhood",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+]
+
 function initializeMap() {
-    $(".trafficButton").hide();
-	window.map = new google.maps.Map(document.getElementById('map-canvas'), { mapTypeId: google.maps.MapTypeId.ROADMAP });
+    $(".button").hide();
+	window.map = new google.maps.Map(document.getElementById('map-canvas'), { mapTypeId: google.maps.MapTypeId.ROADMAP, styles: Style });
 	window.mapBounds = new google.maps.LatLngBounds();
 	window.trafficLayer = new google.maps.TrafficLayer();
-	
 	window.map.addListener('tilesloaded', function() {
-		$(".trafficButton").show();
+		$(".button").show();
 	});
 	
 	var bytewizeUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
@@ -53,20 +113,21 @@ function buildGeoMarker( School ) {
 	var geocoder =  new google.maps.Geocoder();
 	geocoder.geocode( { 'address': School.Name}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-			var latLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()); 
+			var latLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 			var marker = new google.maps.Marker({
 				position: latLng,
+				school: School,
 				map: window.map,
 				icon: 'school.png',
 				title: School.Name
 			});
+			markers.push(marker);
 			window.mapBounds.extend(marker.position);
 			window.map.fitBounds(window.mapBounds);
-			buildInfoBox(marker, School);
+			buildInfoBox(marker);
 		}
 	});	
 }
-
 
 function getPhoto(place, w, h) {
 	var photo = false;
@@ -74,22 +135,8 @@ function getPhoto(place, w, h) {
 	return photo;
 }
 
-function populateSchoolInfo(marker, School) {
-	var request = {location: marker.position,radius: '500',query: School.Name};
-	var service = new google.maps.places.PlacesService(window.map);
-	service.textSearch(request, function(results, status){
-		if (status != google.maps.places.PlacesServiceStatus.OK) {return;}
-		var place = results[0];
-		var photo = getPhoto(place, 32, 32);
-		marker.setMap(null);
-		if (place){ marker.place = place; }
-		if (photo){ marker.icon = photo; }
-		marker.setMap(window.map);
-	});
-}
-
 var infowindow
-function showInfoBox(marker, School) {
+function showInfoBox(marker) {
 	if(infowindow){infowindow.close();}
 	var textBox = "";
 	if (marker.place){
@@ -97,24 +144,31 @@ function showInfoBox(marker, School) {
 		if (photo){ textBox = textBox+"<img src='"+photo+"' /><br/>"; }
 		if (marker.place.icon){textBox = textBox+"<img with='10' height='10' src='"+marker.place.icon+"' /> ";}
 	}
-	textBox = textBox+"<b>"+School.Name+"</b><br/>";
+	textBox = textBox+"<b>"+marker.school.Name+"</b><br/>";
 	if ((marker.place) && (marker.place.formatted_address)){
 		textBox = textBox+"<a target='_newtab' href='https://maps.google.com?daddr="+marker.place.formatted_address+"&layer=t'>Google Navigate</a><br/>";
 	}
-	textBox = textBox+"<a target='_newtab' href='"+School.BytewizeLink+"'>Bytewize Info</a>";
+	textBox = textBox+"<a target='_newtab' href='"+marker.school.BytewizeLink+"'>Bytewize Info</a>";
 	infoWindow.setContent(textBox);
 	infoWindow.open(window.map, marker);
 }
-function buildInfoBox(marker, School) {
-	populateSchoolInfo(marker, School);
+
+function buildInfoBox(marker) {
+	var request = {location: marker.position,radius: '500',query: marker.school.Name};
+	var service = new google.maps.places.PlacesService(window.map);
+	service.textSearch(request, function(results, status){
+		if (status != google.maps.places.PlacesServiceStatus.OK) {return;}
+		var place = results[0];
+		if (place){ marker.place = place; }
+	});
 	infoWindow = new google.maps.InfoWindow();
 	google.maps.event.addListener(marker, "click", function(e){
-		showInfoBox(marker, School);
+		showInfoBox(marker);
 	});
-	(function(marker, School) {
+	(function(marker) {
 		google.maps.event.addListener(marker, "click", function(e){
-			showInfoBox(marker, School);
+			showInfoBox(marker);
 	  });
-	})(marker, School);
+	})(marker);
 }
 
