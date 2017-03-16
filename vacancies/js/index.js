@@ -1,10 +1,9 @@
-function initialize() {
-    window.map = new google.maps.Map(document.getElementById('map-canvas'), {
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+function initializeMap() {
+    window.map = new google.maps.Map(document.getElementById('map-canvas'), { mapTypeId: google.maps.MapTypeId.ROADMAP });
 	window.mapBounds = new google.maps.LatLngBounds();
-	var myUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
-	$.get('https://cors-anywhere.herokuapp.com/' + myUrl, function( data ) {
+	var bytewizeUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
+	var corsUrl = 'https://cors-anywhere.herokuapp.com/'; // Use a proxy because nobody likes to share data.
+	$.get(corsUrl + bytewizeUrl, function( data ) {
 		$(data).find("item").each(function () {
 			var str = $(this).find("description").text();
 			var htmlObject = $.parseHTML( str )
@@ -14,7 +13,7 @@ function initialize() {
 				var html = $.parseHTML(RSSObject);
 				var text = $(html).text();
 				schoolName = text;
-			}else{ // Unformatted string
+			}else{ // Unformatted string, Thanks Bytewize...
 				var html = $.parseHTML(str.substr(str.indexOf("<br><br><br>") + 12));
 				var text = $(html).text();
 				text = text.replace('Details Apply Now','');
@@ -27,9 +26,8 @@ function initialize() {
 			buildGeoMarker( School );
 		});
 	});
-
 }
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initializeMap);
 
 function buildGeoMarker( School ) {
 	var geocoder =  new google.maps.Geocoder();
