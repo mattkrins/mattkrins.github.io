@@ -10,6 +10,7 @@ $( "#traffic" ).click(function() {
 $( "#images" ).click(function() {
 	var This = $(this);
 	$.each(markers, function (k, marker) {
+		Pace.restart();
 		if (marker.place){
 			var photo = getPhoto(marker.place, 32, 32);
 			if (photo){
@@ -59,6 +60,10 @@ function initializeMap() {
 	window.trafficLayer = new google.maps.TrafficLayer();
 	window.map.addListener('tilesloaded', function() {
 		$(".button").show();
+		Pace.stop();
+	});
+	window.map.addListener('bounds_changed', function() {
+		Pace.restart();
 	});
 	
 	var bytewizeUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
