@@ -134,7 +134,7 @@ function showInfoBox(marker) {
 }
 
 function buildInfoBox(marker) {
-	var request = {location: marker.position,radius: '500',query: marker.school.Name};
+	var request = {location: marker.position,radius: '800',query: marker.school.Name};
 	var service = new google.maps.places.PlacesService(window.map);
 	service.textSearch(request, function(results, status){
 		if (status != google.maps.places.PlacesServiceStatus.OK) {return;}
