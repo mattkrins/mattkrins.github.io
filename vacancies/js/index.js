@@ -44,16 +44,15 @@ function initialize() {
 			var jqueryObject = $.parseHTML( str )
 			var yes = $(jqueryObject).find("span").html();
 			var Schools = [];
-			if (yes){
+			if (yes){ // Proper XML object
 				var html = $.parseHTML(yes);
 				var text = $(html).text();
 				var School = [];
 				School["Name"] = text;
 				School["Link"] = $(this).find("link").text();
 				Schools.push(School);
-			}else{
-				var afterComma = str.substr(str.indexOf("<br><br><br>") + 12);
-				var html = $.parseHTML(afterComma);
+			}else{ // Unformatted string
+				var html = $.parseHTML(str.substr(str.indexOf("<br><br><br>") + 12));
 				var text = $(html).text();
 				text = text.replace('Details Apply Now','');
 				text = text.replace(/\-.*/,'');
@@ -75,12 +74,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function infoBox(map, marker, data) {
 	var infoWindow = new google.maps.InfoWindow();
 	google.maps.event.addListener(marker, "click", function(e) {
-		infoWindow.setContent("<a target='_newtab' href='"+data.Link+"'>"+data.Name+"</a>");
+		infoWindow.setContent(data.Name+"<br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
 		infoWindow.open(map, marker);
 	});
 	(function(marker, data) {
 	  google.maps.event.addListener(marker, "click", function(e) {
-		infoWindow.setContent("<a target='_newtab' href='"+data.Link+"'>"+data.Name+"</a>");
+		infoWindow.setContent(data.Name+"<br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
 		infoWindow.open(map, marker);
 	  });
 	})(marker, data);
