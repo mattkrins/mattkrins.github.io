@@ -1,4 +1,4 @@
-function getGeoData( map, bounds, data ) {
+function getGeoData( bounds, data ) {
 	var geocoder =  new google.maps.Geocoder();
 	geocoder.geocode( { 'address': data.Name}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
@@ -12,20 +12,20 @@ function getGeoData( map, bounds, data ) {
 				fillColor: '#ffffff',
 				fillOpacity: 0.1,
 				clickable: false,
-				map: map,
+				map: window.map,
 				center: latLng,
 				radius: 1500
 			});
 			var image = 'school.png';
 			var marker = new google.maps.Marker({
 				position: latLng,
-				map: map,
+				map: window.map,
 				icon: image,
 				title: data.content
 			});
 			bounds.extend(marker.position);
-			map.fitBounds(bounds);
-			infoBox(map, marker, data);
+			window.map.fitBounds(bounds);
+			infoBox(marker, data);
 			circle.bindTo('center', marker, 'position');
 		}
 	});	
@@ -35,7 +35,6 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 	var bounds = new google.maps.LatLngBounds();
-	var infowindow = new google.maps.InfoWindow();    
 	
 	var myUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
 	$.get('https://cors-anywhere.herokuapp.com/' + myUrl, function( data ) {
@@ -63,7 +62,7 @@ function initialize() {
 			}
 			for (var i = 0, length = Schools.length; i < length; i++) {
 				var data = Schools[i];
-				getGeoData( map, bounds, data );
+				getGeoData( bounds, data );
 			}
 		});
 	});
@@ -72,18 +71,17 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 var infowindow
-function infoBox(map, marker, data) {
+function infoBox(marker, data) {
+	if(infowindow){infowindow.close();}
 	infoWindow = new google.maps.InfoWindow();
 	google.maps.event.addListener(marker, "click", function(e){
-		if(infowindow){infowindow.close();}
 		infoWindow.setContent("<b>"+data.Name+"</b><br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
-		infoWindow.open(map, marker);
+		infoWindow.open(window.map, marker);
 	});
 	(function(marker, data) {
 		google.maps.event.addListener(marker, "click", function(e){
-			if(infowindow){infowindow.close();}
 			infoWindow.setContent("<b>"+data.Name+"</b><br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
-			infoWindow.open(map, marker);
+			infoWindow.open(window.map, marker);
 	  });
 	})(marker, data);
 }
