@@ -12,9 +12,13 @@ $( ".trafficButton" ).click(function() {
 });
 
 function initializeMap() {
-    window.map = new google.maps.Map(document.getElementById('map-canvas'), { mapTypeId: google.maps.MapTypeId.ROADMAP });
+    $(".trafficButton").hide();
+	window.map = new google.maps.Map(document.getElementById('map-canvas'), { mapTypeId: google.maps.MapTypeId.ROADMAP });
 	window.mapBounds = new google.maps.LatLngBounds();
 	window.trafficLayer = new google.maps.TrafficLayer();
+	
+		$(".trafficButton").show();
+	});
 	
 	var bytewizeUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
 	var corsUrl = 'https://cors-anywhere.herokuapp.com/'; // Use a proxy because nobody likes to share data.
