@@ -26,55 +26,35 @@ $( "#images" ).click(function() {
 	$(this).toggleClass( "on");
 });
 
-var Style = [
+var mapStyle = [
   {
     "featureType": "administrative.land_parcel",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
+    "stylers": [{"visibility": "off"}]
   },
   {
     "featureType": "administrative.neighborhood",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
+    "stylers": [{"visibility": "off"}]
   },
   {
     "featureType": "poi",
     "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
+    "stylers": [{"visibility": "off"}]
   },
   {
     "featureType": "road",
     "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
+    "stylers": [{"visibility": "off"}]
   },
   {
     "featureType": "water",
     "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
+    "stylers": [{"visibility": "off"}]
   }
 ]
 
 function initializeMap() {
     $(".button").hide();
-	window.map = new google.maps.Map(document.getElementById('map-canvas'), { mapTypeId: google.maps.MapTypeId.ROADMAP, styles: Style });
+	window.map = new google.maps.Map(document.getElementById('map-canvas'), { mapTypeId: google.maps.MapTypeId.ROADMAP, styles: mapStyle });
 	window.mapBounds = new google.maps.LatLngBounds();
 	window.trafficLayer = new google.maps.TrafficLayer();
 	window.map.addListener('tilesloaded', function() {
