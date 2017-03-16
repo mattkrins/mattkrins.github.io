@@ -71,16 +71,19 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
+var infowindow
 function infoBox(map, marker, data) {
-	var infoWindow = new google.maps.InfoWindow();
-	google.maps.event.addListener(marker, "click", function(e) {
-		infoWindow.setContent(data.Name+"<br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
+	infoWindow = new google.maps.InfoWindow();
+	google.maps.event.addListener(marker, "click", function(e){
+		if(infowindow){infowindow.close();}
+		infoWindow.setContent("<b>"+data.Name+"</b><br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
 		infoWindow.open(map, marker);
 	});
 	(function(marker, data) {
-	  google.maps.event.addListener(marker, "click", function(e) {
-		infoWindow.setContent(data.Name+"<br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
-		infoWindow.open(map, marker);
+		google.maps.event.addListener(marker, "click", function(e){
+			if(infowindow){infowindow.close();}
+			infoWindow.setContent("<b>"+data.Name+"</b><br/><a target='_newtab' href='"+data.Link+"'>Bytewize Info</a>");
+			infoWindow.open(map, marker);
 	  });
 	})(marker, data);
 }
