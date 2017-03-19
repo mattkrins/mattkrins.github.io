@@ -12,7 +12,7 @@
 		body { height: 100%; margin: 0; padding: 0; }
 		#map-canvas { height: 100%; margin: 0; padding: 0; }
 		.on {font-weight:bold;}
-		.button {
+		.button, .bytewize {
 			position: absolute;
 			top: 10px;
 			left: 10px;
@@ -29,6 +29,15 @@
 			box-shadow: 0 1px 6px rgba(0,0,0,0.16);
 			font-family: "Open Sans";
 		}.button:hover {background:#EBEBEB;}
+		.bytewize {
+			top: 10px;
+			left: auto;
+			right: 10px;
+			padding: 0px;
+			border-radius:5px;
+			border:none;
+			box-shadow: 0 0px 6px rgba(0,0,0,0.5);
+		}
 		.pace {
 			-webkit-pointer-events: none;
 			pointer-events: none;
@@ -54,6 +63,7 @@
 	<body>
 		<div class="button" id="traffic" style="left: 120px;" >Street Traffic</div>
 		<div class="button" id="images" style="left: 210px;" >School Icons</div>
+		<a href="http://www.bytewize.com.au/" target="_newtab" ><img class="bytewize" src="bytewize.png" /></a>
 		<div id="map-canvas"/>
 		<script src="js/index.js"></script>
 	</body>

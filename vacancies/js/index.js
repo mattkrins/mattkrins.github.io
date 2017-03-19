@@ -130,6 +130,7 @@ function showInfoBox(marker) {
 		if (marker.place.icon){textBox = textBox+"<img with='10' height='10' src='"+marker.place.icon+"' /> ";}
 	}
 	textBox = textBox+"<b>"+marker.school.Name+"</b><br/>";
+	textBox = textBox+"<a target='_newtab' href='https://www.google.com.au/search?q="+marker.school.Name+"'>Google Search</a><br/>";
 	if ((marker.place) && (marker.place.formatted_address)){
 		textBox = textBox+"<a target='_newtab' href='https://maps.google.com?daddr="+marker.place.formatted_address+"&layer=t'>Google Navigate</a><br/>";
 	}
