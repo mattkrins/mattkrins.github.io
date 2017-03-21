@@ -67,6 +67,7 @@ function initializeMap() {
 	});
 	
 	var bytewizeUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
+	var bytewizeUrl = 'https://employment.bytewize.com.au/recruit/downloadrssfeed?digest=3sTZVsHKxHFiY6oVylxFfhWMAsezGsogx5ji7Hc6ZVY-';
 	var corsUrl = 'https://cors-anywhere.herokuapp.com/'; // Use a proxy because nobody likes to share data.
 	$.get(corsUrl + bytewizeUrl, function( data ) {
 		$(data).find("item").each(function () {
@@ -96,7 +97,7 @@ google.maps.event.addDomListener(window, 'load', initializeMap);
 
 function buildGeoMarker( School ) {
 	var geocoder =  new google.maps.Geocoder();
-	geocoder.geocode( { 'address': School.Name}, function(results, status) {
+	geocoder.geocode( { 'address': School.Name+", Victoria"}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var latLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 			var marker = new google.maps.Marker({
