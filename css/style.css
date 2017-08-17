@@ -1,7 +1,8 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
 @import "devicons.min.css";
-.devicons-lua:before{content: url('lua.png');}
 @import "font-awesome.min.css";
+
+.devicons-lua:before{content: url('lua.png');}
 
 html { height: 100%; width: 100%; margin: 0px; padding: 0px; }
 
@@ -37,8 +38,10 @@ body {
 }
 
 .card {
-	width: 500px;
+	left: 25%;
+	width: 50%;
 	min-height: 100px;
+	max-height: 300px;
 	padding: 20px;
 	border-radius: 3px;
 	background-color: white;
@@ -46,6 +49,7 @@ body {
 	position: relative;
 	overflow: hidden;
 }
+
 .card:after {
 	content: '';
 	display: block;
@@ -60,8 +64,8 @@ body {
 	z-index: -1;
 	position: absolute;
 	padding: 10px 20px 5px;
-	width: 480px;
-	left: 10px;
+	width: 46%;
+	left: 27%;
 	bottom: 10px;
 	background-color: #ECECEC;
 	border-radius: 3px;
@@ -78,11 +82,13 @@ body {
 	flex-direction: row;
 	z-index: 2;
 	position: relative;
+	min-width: 400px;
 }
 .container img {
 	border-radius: 50%;
 	width: 120px;
 	height: 120px;
+	animation: fade 1s forwards;
 }
 .container .profile {
 	padding: 0px 20px;
@@ -120,18 +126,22 @@ body {
 }
 .tt:hover i { visibility: visible; }
 
-.links ul
+.links
 {
 	z-index: -1;
-	list-style-type: none;
 	position: absolute;
 	top: 20px;
-	left: 90%;
+	left: 70%;
+	animation: animate_links 0.7s cubic-bezier(0.425, 0, 0.47, 1.105) 0.75s forwards;
+}
+
+.links ul
+{
+	list-style-type: none;
 	background: #ECECEC;
 	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 	border-radius: 0 3px 3px 0;
 	margin: 0px; padding: 0px;
-	animation: animate_links 0.7s cubic-bezier(0.425, 0, 0.47, 1.105) 0.75s forwards;
 }
 
 .links ul li a
@@ -151,6 +161,15 @@ body {
 {
 	border: none;
 	border-radius: 0 0 3px 0;
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 @keyframes animate_box {
@@ -173,10 +192,10 @@ body {
 }
 @keyframes animate_links {
 	0% {
-		left: 90%;
+		left: 70%;
 	}
 	100% {
-		left: 100%;
+		left: 75%;
 	}
 }
 @keyframes slidein {
@@ -190,5 +209,23 @@ body {
 		transform: rotate(-30deg);
 		top: -24px;
 		left: -78px;
+	}
+}
+
+@media only screen and (max-width : 800px) {
+	.card, .badges {
+		left: 2%;
+		width: 91%;
+	}
+	.links {
+		left: 85%;
+	}
+	@keyframes animate_links {
+		0% {
+			left: 85%;
+		}
+		100% {
+			left: 93%;
+		}
 	}
 }
