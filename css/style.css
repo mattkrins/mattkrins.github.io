@@ -1,5 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
 @import "devicons.min.css";
+.devicons-lua:before{content: url('lua.png');}
 @import "font-awesome.min.css";
 
 html { height: 100%; width: 100%; margin: 0px; padding: 0px; }
