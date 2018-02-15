@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset='utf-8'/>
     <title>Google Calendar</title>
-    <meta charset='utf-8' />
+	<link rel="icon" href="icon.png"/>
 	<style>
 		@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
 		@import "../../css/font-awesome.min.css";
@@ -91,12 +92,9 @@
 			appendPre('$'+paid+' paid.', 'paid');
 			var due = owed-paid;
 			appendPre('$'+due+' due today.', 'due');
-			if (payments.length <= 0) { appendPre('\nNo payments found.\n'); return Loader(false); }
-			appendPre("\n--------Payments:--------\n", "payments");
-			for (i = 0; i < payments.length; i++) {
-				var payment = payments[i];
-				appendPre(payment, "payments");
-			}
+			if (payments.length <= 0) { appendPre('\nNo payments found.\n', "payments"); return Loader(false); }
+			appendPre("\n--------Payments:--------\n", "payments");	
+			for (i = 0; i < payments.length; i++) { appendPre(payments[i], "payments"); }
 			appendPre("\n-------------------------", "payments");
 			Loader(false);
 		}
