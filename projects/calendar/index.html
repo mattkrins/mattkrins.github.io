@@ -1,140 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset='utf-8'/>
-    <title>Google Calendar</title>
-	<link rel="icon" href="icon.png"/>
-	<style>
-		@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
-		@import "../../css/font-awesome.min.css";
-		body {
-			font-size: 22px;
-			font-family: 'Open Sans', sans-serif;
-		}
-		#loader {
-			width:100px;height:100px;
-			background:url(loader.gif) no-repeat center center;
-			display:none;
-		}
-		#payments { font-size: 16px; }
-		#owed { color:#FF8438; } #paid { color:#9AFF35; } #due { color:#5B92FF; }
-	</style>
-  </head>
-  <body>
-    <button id="authorize-button" style="display: none;">Authorize</button>
-    <button id="signout-button" style="display: none;">Sign Out</button>
-    <button id="refresh-button" onClick="return window.location.reload();">Refresh</button>
-    <div id="loader"></div>
-    <pre id="owed"></pre>
-    <pre id="paid"></pre>
-    <pre id="due"></pre>
-    <pre id="content"></pre>
-    <pre id="payments"></pre>
-    <script type="text/javascript">
-      var CLIENT_ID = '440409651245-04vi62vgqder6l51jgqtgq5t2l7rbh64.apps.googleusercontent.com';
-      var API_KEY = 'AIzaSyAHO3Ap6ApSdjcSAbDzYlZupXaEwQa9CN4';
-      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-      var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
-      var authorizeButton = document.getElementById('authorize-button');
-      var signoutButton = document.getElementById('signout-button');
-      function handleClientLoad() {
-        gapi.load('client:auth2', initClient);
-      }
-      function initClient() {
-        gapi.client.init({
-          apiKey: API_KEY,
-          clientId: CLIENT_ID,
-          discoveryDocs: DISCOVERY_DOCS,
-          scope: SCOPES
-        }).then(function () {
-          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-          authorizeButton.onclick = handleAuthClick;
-          signoutButton.onclick = handleSignoutClick;
-        });
-      }
-      function updateSigninStatus(isSignedIn) {
-        if (isSignedIn) {
-          authorizeButton.style.display = 'none';
-          signoutButton.style.display = 'block';
-          mainFunction();
-        } else {
-          authorizeButton.style.display = 'block';
-          signoutButton.style.display = 'none';
-        }
-      }
-      function handleAuthClick(event) {
-        gapi.auth2.getAuthInstance().signIn();
-      }
-      function handleSignoutClick(event) {
-        gapi.auth2.getAuthInstance().signOut();
-      }
-      function appendPre(message, id) {
-        var useID = 'content';
-		if (id){useID = id;}
-		var pre = document.getElementById(useID);
-        var textContent = document.createTextNode(message + '\n');
-        pre.appendChild(textContent);
-      }
-		var googleCalendar = 'kl4hmv4j94d6vg5ghn9f61vq0c@group.calendar.google.com';
-		var perWeek = 70; // $70 per week
-		var oneDay = 7*24*60*60*1000; // 1 week
-		var firstDate = new Date(2018,01,15); // day we started counting
-		var secondDate = new Date(); // today
-		var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-		var owed = diffDays * perWeek; // $70 per week
-	    var paid = 0;
-		var payments=[];
-	   
-		function Loader(show) {if(show){document.getElementById("loader").style.display = 'block';}else{document.getElementById("loader").style.display = 'none';}}
-		function Finish() {
-			appendPre('$'+owed+' owed.', 'owed');
-			appendPre('$'+paid+' paid.', 'paid');
-			var due = owed-paid;
-			appendPre('$'+due+' due today.', 'due');
-			if (payments.length <= 0) { appendPre('\nNo payments found.\n', "payments"); return Loader(false); }
-			appendPre("\n--------Payments:--------\n", "payments");	
-			for (i = 0; i < payments.length; i++) { appendPre(payments[i], "payments"); }
-			appendPre("\n-------------------------", "payments");
-			Loader(false);
-		}
-		function mainFunction() {
+	<head>
+		<meta charset='utf-8'/>
+		<title>Google Calendar</title>
+		<link rel="icon" href="icon.png"/>
+		<style>
+			@import "https://fonts.googleapis.com/css?family=Open+Sans:300,400";
+			@import "../../css/font-awesome.min.css";
+			body {
+				font-size: 22px;
+				font-family: 'Open Sans', sans-serif;
+				background-image: url("wallpaper.png");
+				background-repeat: repeat;
+			}
+			button {
+				background-color: white; 
+				border: 1px solid #4CAF50;
+				color: black;
+				padding: 2px 10px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				margin: 5px;
+				transition-duration: 0.1s;
+				cursor: pointer;
+			}
+			button:hover { background-color: #4CAF50; color: white; }
+			#signout-button { border-color: #f44336; }
+			#signout-button:hover { background-color: #f44336; }
+			#refresh-button { border-color: #555555; }
+			#refresh-button:hover { background-color: #555555; }
+			#loader {
+				width:100px;height:100px;
+				background:url(loader.gif) no-repeat center center;
+			}
+			#payments { font-size: 16px; }
+			#owed, #paid, #due, #signout-button, #authorize-button, #refresh-button { display:none; }
+			#owed { color:#e74c3c; } #paid { color:#2ecc71; } #due { color:#3498db; }
+		</style>
+	</head>
+	<body>
+		<button id="authorize-button">Authorize</button>
+		<button id="signout-button">Sign Out</button>
+		<button id="refresh-button" onClick="return window.location.reload();">Refresh</button>
+		<div id="loader"></div>
+		<pre id="owed"><i class="fa fa-calculator"></i> </pre>
+		<pre id="paid"><i class="fa fa-handshake-o"></i> </pre>
+		<pre id="due"><i class="fa fa-money"></i> </pre>
+		<pre id="content"></pre>
+		<pre id="payments"></pre>
+		<script type="text/javascript">
+		  var CLIENT_ID = '440409651245-04vi62vgqder6l51jgqtgq5t2l7rbh64.apps.googleusercontent.com';
+		  var API_KEY = 'AIzaSyAHO3Ap6ApSdjcSAbDzYlZupXaEwQa9CN4';
+		  var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+		  var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
+		  var authorizeButton = document.getElementById('authorize-button');
+		  var signoutButton = document.getElementById('signout-button');
+		  function handleClientLoad() {
+			gapi.load('client:auth2', initClient);
+		  }
+		  function initClient() {
+			gapi.client.init({
+			  apiKey: API_KEY,
+			  clientId: CLIENT_ID,
+			  discoveryDocs: DISCOVERY_DOCS,
+			  scope: SCOPES
+			}).then(function () {
+			  gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+			  updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+			  authorizeButton.onclick = handleAuthClick;
+			  signoutButton.onclick = handleSignoutClick;
+			});
+		  }
+		  function updateSigninStatus(isSignedIn) {
+			Display("refresh-button","block");
+			if (isSignedIn) {
+			  authorizeButton.style.display = 'none';
+			  signoutButton.style.display = 'block';
+			  mainFunction();
+			} else {
+			  authorizeButton.style.display = 'block';
+			  signoutButton.style.display = 'none';
+			  Loader(false);
+			}
+		  }
+		  function handleAuthClick(event) {
+			gapi.auth2.getAuthInstance().signIn();
+		  }
+		  function handleSignoutClick(event) {
+			gapi.auth2.getAuthInstance().signOut();
 			Loader(true);
-			gapi.client.calendar.calendarList.list().then(function(response) {
-				if ( !response.status || response.status != 200 ){Loader(false); return appendPre('Major error!');}
-				if ( !response.result || !response.result.items ){Loader(false); return appendPre('No calendars found!');}
-				var found = false;
-				for (i = 0; i < response.result.items.length; i++) {
-					var item = response.result.items[i];
-					if ( response.result.items[i].id == googleCalendar ){found = true;}
-				} if ( !found ){Loader(false); return appendPre('Calendar not found!');}
-				calculatePayments();
-			});
-		}
-		function calculatePayments() {
-			gapi.client.calendar.events.list({
-				'calendarId': googleCalendar,
-				'timeMin': firstDate.toISOString(),
-				'showDeleted': false,'singleEvents': true,'orderBy': 'startTime',
-				'maxResults': 2500
-			}).then(function(response) {
-				var events = response.result.items;
-				if (events.length <= 0) { return Finish(); }
-				for (i = 0; i < events.length; i++) {
-					var payment = events[i];
-					var when = payment.start.dateTime;
-					if (!when) { when = payment.start.date; }
-					var cash = parseInt(payment.summary.replace(/[^0-9]/, ''));
-					payments.push( when + ': '+payment.summary );
-					paid = paid+cash;
-					if (i >= events.length-1){Finish();}
-				}
-			});
-		}
-    </script>
-    <script async defer src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
-  </body>
+			return window.location.reload();
+		  }
+		  function appendPre(message, id) {
+			var useID = 'content';
+			if (id){useID = id;}
+			var pre = document.getElementById(useID);
+			var textContent = document.createTextNode(message + '\n');
+			pre.appendChild(textContent);
+		  }
+			var googleCalendar = 'kl4hmv4j94d6vg5ghn9f61vq0c@group.calendar.google.com';
+			var perWeek = 70; // $70 per week
+			var oneDay = 7*24*60*60*1000; // 1 week
+			var firstDate = new Date(2018,01,15); // day we started counting
+			var secondDate = new Date(); // today
+			var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+			var owed = diffDays * perWeek; // $70 per week
+			var paid = 0;
+			var payments=[];
+		   
+			function Display(id,dis) {document.getElementById(id).style.display = dis;}
+			function Loader(show) {if(show){ Display("loader","block"); }else{ Display("loader","none"); }}
+			function Finish() {
+				Display("owed","block"); Display("paid","block"); Display("due","block");
+				appendPre('Owed: $'+owed, 'owed');
+				appendPre('Paid: $'+paid, 'paid');
+				var due = owed-paid;
+				appendPre('Due Today: $'+due, 'due');
+				if (payments.length <= 0) { appendPre('\nNo payments found.\n', "payments"); return Loader(false); }
+				appendPre("\n--------Payments:--------\n", "payments");	
+				for (i = 0; i < payments.length; i++) { appendPre(payments[i], "payments"); }
+				appendPre("\n-------------------------", "payments");
+				Loader(false);
+			}
+			function mainFunction() {
+				Loader(true);
+				gapi.client.calendar.calendarList.list().then(function(response) {
+					if ( !response.status || response.status != 200 ){Loader(false); return appendPre('Major error!');}
+					if ( !response.result || !response.result.items ){Loader(false); return appendPre('No calendars found!');}
+					var found = false;
+					for (i = 0; i < response.result.items.length; i++) {
+						var item = response.result.items[i];
+						if ( response.result.items[i].id == googleCalendar ){found = true;}
+					} if ( !found ){Loader(false); return appendPre('Calendar not found!');}
+					calculatePayments();
+				});
+			}
+			function calculatePayments() {
+				gapi.client.calendar.events.list({
+					'calendarId': googleCalendar,
+					'timeMin': firstDate.toISOString(),
+					'showDeleted': false,'singleEvents': true,'orderBy': 'startTime',
+					'maxResults': 2500
+				}).then(function(response) {
+					var events = response.result.items;
+					if (events.length <= 0) { return Finish(); }
+					for (i = 0; i < events.length; i++) {
+						var payment = events[i];
+						var when = payment.start.dateTime;
+						if (!when) { when = payment.start.date; }
+						var cash = parseInt(payment.summary.replace(/[^0-9]/, ''));
+						payments.push( when + ': '+payment.summary );
+						paid = paid+cash;
+						if (i >= events.length-1){Finish();}
+					}
+				});
+			}
+		</script>
+		<script async defer src="https://apis.google.com/js/api.js"
+		  onload="this.onload=function(){};handleClientLoad()"
+		  onreadystatechange="if (this.readyState === 'complete') this.onload()">
+		</script>
+	</body>
 </html>
