@@ -13,6 +13,18 @@
 				background-image: url("wallpaper.png");
 				background-repeat: repeat;
 			}
+			#loader {
+				position: absolute;
+				top: 5px;
+				left: 150px;
+				width: 50px;
+			}
+			#loader:before { content: '';display: block;padding-top: 100%; }
+			.circular { animation: rotate 2s linear infinite;height: 100%;transform-origin: center center;width: 100%;position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto; }
+			.path { stroke-dasharray: 1, 200;stroke-dashoffset: 0;animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;stroke-linecap: round; }
+			@keyframes rotate { 100% { transform: rotate(360deg); } }
+			@keyframes dash { 0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; } 50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35px; } 100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; } }
+			@keyframes color { 100%, 0% { stroke: #d62d20; } 40% { stroke: #0057e7; } 66% { stroke: #008744; } 80%, 90% { stroke: #ffa700; } }
 			button {
 				background-color: white; 
 				border: 1px solid #4CAF50;
@@ -31,10 +43,6 @@
 			#signout-button:hover { background-color: #f44336; }
 			#refresh-button { border-color: #555555; }
 			#refresh-button:hover { background-color: #555555; }
-			#loader {
-				width:100px;height:100px;
-				background:url(loader.gif) no-repeat center center;
-			}
 			#payments, #history { font-size: 16px; }
 			#owed, #paid, #due, #signout-button, #authorize-button, #refresh-button, #make-button, #history-button { display:none; }
 			#owed { color:#e74c3c; } #paid { color:#2ecc71; } #due { color:#3498db; }
@@ -45,7 +53,7 @@
 		<button id="signout-button">Sign Out</button>
 		<button id="make-button">Make Calendar</button>
 		<button id="refresh-button" onClick="return window.location.reload();">Refresh</button>
-		<div id="loader"></div>
+		<div id="loader"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>
 		<pre id="owed"><i class="fa fa-calculator"></i> </pre>
 		<pre id="paid"><i class="fa fa-handshake-o"></i> </pre>
 		<pre id="due"><i class="fa fa-money"></i> </pre>
