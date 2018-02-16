@@ -44,16 +44,17 @@
 			#refresh-button { border-color: #555555; }
 			#refresh-button:hover { background-color: #555555; }
 			#payments, #history { font-size: 16px; }
-			#owed, #paid, #due, #signout-button, #authorize-button, #refresh-button, #make-button, #history-button { display:none; }
+			#owed, #paid, #due, #signout-button, #authorize-button, #refresh-button, #make-button, #history-button, #pay-button { display:none; }
 			#owed { color:#e74c3c; } #paid { color:#2ecc71; } #due { color:#3498db; }
 		</style>
 	</head>
 	<body>
+		<div id="loader"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>
 		<button id="authorize-button">Authorize</button>
 		<button id="signout-button">Sign Out</button>
 		<button id="make-button">Make Calendar</button>
 		<button id="refresh-button" onClick="return window.location.reload();">Refresh</button>
-		<div id="loader"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>
+		<button id="pay-button">Pay</button>
 		<pre id="owed"><i class="fa fa-calculator"></i> </pre>
 		<pre id="paid"><i class="fa fa-handshake-o"></i> </pre>
 		<pre id="due"><i class="fa fa-money"></i> </pre>
@@ -124,10 +125,13 @@
 			var calendarID = false;
 			function Recalculate() { diffDays = Math.round(Math.abs((firstDate.getTime() - today.getTime())/(counter))); owed = diffDays * perWeek; }
 		   
+			function toJSONLocal(date) { var local = new Date(date); local.setMinutes(date.getMinutes() - date.getTimezoneOffset()); return local.toJSON().slice(0, 10); }
 			function addDays(date, days) { var result = new Date(date); result.setDate(result.getDate() + days); return result; }
 			function Display(id,dis) {document.getElementById(id).style.display = dis;}
 			function Loader(show) {if(show){ Display("loader","block"); }else{ Display("loader","none"); }}
 			function Finish() {
+				document.getElementById('pay-button').onclick = makePayment;
+				Display("pay-button","block");
 				var due = owed-paid;
 				if (due <= 0){
 					appendPre('Nothing to do.', 'paid');Display("paid","block"); 
@@ -137,7 +141,7 @@
 					appendPre('Due Today: $'+due, 'due');Display("due","block");
 				}
 				if (payments.length <= 0) {
-				appendPre('\nNo recent payments found.\n', "payments");
+					appendPre('\nNo recent payments found.\n', "payments");
 					document.getElementById('history-button').onclick = showHistory;
 					Display("history-button","block");
 					return Loader(false);
@@ -146,6 +150,28 @@
 				for (i = 0; i < payments.length; i++) { appendPre(payments[i], "payments"); }
 				appendPre("\n-------------------------", "payments");
 				Loader(false);
+			}
+			function makePayment() {
+				if ( !calendarID ){return console.error('No calendarID.');}
+				var amount = prompt("How much was paid?", "70");
+				if (amount == null || amount == "") {return;}
+				amount = parseInt(amount.replace(/[^0-9]/, ''));
+				if (amount <= 0) {return;}
+				var comment = prompt("Any comments?", "");
+				if (comment == null || comment == "") {comment = "";}else{comment = " "+comment}
+				Loader(true);
+				gapi.client.calendar.events.insert({
+					'summary' : amount+comment, 
+					'calendarId' : calendarID,
+					'end': { 'date': toJSONLocal(today) }, 
+					'start': { 'date': toJSONLocal(today) }
+				}).then(function(response) {
+					Loader(false);
+					if ( !response.status || response.status != 200 ){return appendPre('Connection error.');}
+					if ( !response.result || !response.result.summary ){return appendPre('Failed to make payment!');}
+					appendPre('Payment complete! Refreshing page...');
+					window.location.reload();
+				});
 			}
 			function makeCalendar() {
 				Loader(true);
@@ -156,7 +182,6 @@
 					if ( !response.result || !response.result.id ){return appendPre('Failed to make calendar!');}
 					appendPre('Calendar made! Refreshing page...');
 					window.location.reload();
-					console.log(response);
 				});
 			}
 			function calendarNotFound() {
@@ -234,6 +259,7 @@
 					}
 				});
 			}
+			// Add event payment button with amount
 			function showHistory() {
 				if ( !calendarID ){Loader(false); return console.error('No calendarID.');}
 				Loader(true);
