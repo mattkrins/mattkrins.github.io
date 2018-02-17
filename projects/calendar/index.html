@@ -53,7 +53,7 @@
 		<button id="authorize-button">Authorize</button>
 		<button id="signout-button">Sign Out</button>
 		<button id="make-button">Make Calendar</button>
-		<button id="refresh-button" onClick="return window.location.reload();">Refresh</button>
+		<button id="refresh-button" onClick="return Reset();">Refresh</button>
 		<button id="pay-button">Pay</button>
 		<pre id="owed"><i class="fa fa-calculator"></i> </pre>
 		<pre id="paid"><i class="fa fa-handshake-o"></i> </pre>
@@ -102,15 +102,13 @@
 		  }
 		  function handleSignoutClick(event) {
 			gapi.auth2.getAuthInstance().signOut();
-			Loader(true);
-			return window.location.reload();
+			window.location.reload(false);
 		  }
 		  function appendPre(message, id) {
 			var useID = 'content';
 			if (id){useID = id;}
-			var pre = document.getElementById(useID);
 			var textContent = document.createTextNode(message + '\n');
-			pre.appendChild(textContent);
+			document.getElementById(useID).appendChild(textContent);
 		  }
 		  
 			var calendarName = "Payments";
@@ -123,8 +121,32 @@
 			var paid = 0;
 			var payments=[];
 			var calendarID = false;
+			function Reset() {
+				Loader(true);
+				calendarID = false;
+				firstDate = new Date(2018,01,15);
+				perWeek = 0;
+				paid = 0;
+				//payments.splice(0,payments.length);
+				payments.length = 0;
+				payments=[];
+				Recalculate();
+				var owe = document.getElementById("owed"); while (owe.firstChild) { owe.removeChild(owe.firstChild); }
+				var pay = document.getElementById("paid"); while (pay.firstChild) { pay.removeChild(pay.firstChild); }
+				var due = document.getElementById("due"); while (due.firstChild) { due.removeChild(due.firstChild); }
+				var content = document.getElementById("content"); while (content.firstChild) { content.removeChild(content.firstChild); }
+				var payment = document.getElementById("payments"); while (payment.firstChild) { payment.removeChild(payment.firstChild); }
+				var history = document.getElementById("history"); while (history.firstChild) { history.removeChild(history.firstChild); }
+				Display("owed","none"); 
+				Display("paid","none"); 
+				Display("due","none"); 
+				Display("refresh-button","none"); 
+				Display("make-button","none"); 
+				Display("history-button","none"); 
+				Display("pay-button","none");
+				handleClientLoad();
+			}
 			function Recalculate() { diffDays = Math.round(Math.abs((firstDate.getTime() - today.getTime())/(counter))); owed = diffDays * perWeek; }
-		   
 			function toJSONLocal(date) { var local = new Date(date); local.setMinutes(date.getMinutes() - date.getTimezoneOffset()); return local.toJSON().slice(0, 10); }
 			function addDays(date, days) { var result = new Date(date); result.setDate(result.getDate() + days); return result; }
 			function Display(id,dis) {document.getElementById(id).style.display = dis;}
@@ -170,7 +192,7 @@
 					if ( !response.status || response.status != 200 ){return appendPre('Connection error.');}
 					if ( !response.result || !response.result.summary ){return appendPre('Failed to make payment!');}
 					appendPre('Payment complete! Refreshing page...');
-					window.location.reload();
+					Reset();
 				});
 			}
 			function makeCalendar() {
@@ -181,7 +203,7 @@
 					if ( !response.status || response.status != 200 ){return appendPre('Connection error.');}
 					if ( !response.result || !response.result.id ){return appendPre('Failed to make calendar!');}
 					appendPre('Calendar made! Refreshing page...');
-					window.location.reload();
+					Reset();
 				});
 			}
 			function calendarNotFound() {
