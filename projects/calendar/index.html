@@ -127,9 +127,7 @@
 				firstDate = new Date(2018,01,15);
 				perWeek = 0;
 				paid = 0;
-				//payments.splice(0,payments.length);
-				payments.length = 0;
-				payments=[];
+				payments.length = 0; payments=[];
 				Recalculate();
 				var owe = document.getElementById("owed"); while (owe.firstChild) { owe.removeChild(owe.firstChild); }
 				var pay = document.getElementById("paid"); while (pay.firstChild) { pay.removeChild(pay.firstChild); }
@@ -281,7 +279,6 @@
 					}
 				});
 			}
-			// Add event payment button with amount
 			function showHistory() {
 				if ( !calendarID ){Loader(false); return console.error('No calendarID.');}
 				Loader(true);
@@ -306,7 +303,7 @@
 			}
 		</script>
 		<script async defer src="https://apis.google.com/js/api.js"
-		  onload="this.onload=function(){};handleClientLoad()"
+		  onload="this.onload=function(){};Reset();"
 		  onreadystatechange="if (this.readyState === 'complete') this.onload()">
 		</script>
 	</body>
