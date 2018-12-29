@@ -151,7 +151,9 @@
 			function Loader(show) {if(show){ Display("loader","block"); }else{ Display("loader","none"); }}
 			function Finish() {
 				document.getElementById('pay-button').onclick = makePayment;
+				document.getElementById('history-button').onclick = showHistory;
 				Display("pay-button","block");
+				Display("history-button","block");
 				var due = owed-paid;
 				if (due <= 0){
 					appendPre('Nothing to do.', 'paid');Display("paid","block"); 
@@ -162,8 +164,6 @@
 				}
 				if (payments.length <= 0) {
 					appendPre('\nNo recent payments found.\n', "payments");
-					document.getElementById('history-button').onclick = showHistory;
-					Display("history-button","block");
 					return Loader(false);
 				}
 				appendPre("\n--------Payments:--------\n", "payments");	
