@@ -3,6 +3,7 @@
 @import "font-awesome.min.css";
 
 .devicons-lua:before{content: url('lua.png');}
+.devicons-electron:before{content: url('electron.png');}
 
 html { height: 100%; width: 100%; margin: 0px; padding: 0px; }
 
