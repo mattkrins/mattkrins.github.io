@@ -21,7 +21,10 @@
           url
         );
       }
-
+      function isNormalInteger(str) {
+          var n = Math.floor(Number(str));
+          return n !== Infinity && String(n) === str && n >= 0;
+      }
       function redirect() {
         var location = window.location;
         var issueNumber = location.pathname.split("/")[
@@ -36,6 +39,11 @@
           "/" +
           location.pathname.split("/")[PATH_SEGMENTS_TO_SKIP];
 
+        var staticLink = false;
+        if(!isNormalInteger(issueNumber)){
+          staticLink = issueNumber;
+          issueNumber = 1;
+        }
         fetch(GITHUB_ISSUES_LINK + issueNumber)
           .then(function (response) {
             if (response.status !== 200) {
@@ -49,7 +57,17 @@
               .then(function (payload) {
                 var message = payload.message;
                 var title = payload.title;
-
+                if(staticLink){
+                  if (payload.body && payload.body != ""){
+                    var staticLinks = JSON.parse(payload.body);
+                    if (staticLinks[staticLink]){ location.replace(staticLinks[staticLink]); } else {
+                    throw new Error("Static link is invalid!");
+                  }
+                  } else {
+                    throw new Error("An error occurred with the GitHub API. Maybe you've exceeded your API limits (60 per hour)");
+                  }
+                  return;
+                }
                 if (message !== "Not Found" && title && isUrl(title)) {
                   // Check if the title of issue is a legitimate URL
                   var url = new URL(title);
