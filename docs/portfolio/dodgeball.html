@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#c4f05a" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link href="../_app/immutable/entry/start.DfcbAm-n.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C9DMf9nI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BBVsvCfH.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.W3GNSKVm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DXLwiZ0H.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dt3Dzi4b.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/4.B8jKgj9u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CR659iHQ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C-9AiAZG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DVjqZI-B.js" rel="modulepreload">
+		<!--15ehqgt--><meta name="description" content="A Garry's Mod gamemode built in Lua that turns classic dodgeball into a structured multiplayer ruleset with scoring, bot AI, admin controls, and round-based gameplay."/> <meta property="og:title" content="DodgeBall — Matt Krins"/> <meta property="og:description" content="A Garry's Mod gamemode built in Lua that turns classic dodgeball into a structured multiplayer ruleset with scoring, bot AI, admin controls, and round-based gameplay."/> <meta property="og:image" content="/img/dodgeball/hero.jpg"/> <link rel="canonical" href="https://mattkrins.com/portfolio/dodgeball"/><!----><title>DodgeBall — Matt Krins</title>
+		<link href="../_app/immutable/assets/0.BUHmNOF9.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Tooltip.87K-KfYa.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Icon.CMdpMAir.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Breadcrumbs.-iJrWxRc.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/4.CQIi3mpk.css" rel="stylesheet">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[0--><!--[--><!--[-1--><!--]--> <!--[-1--><!--]--> <div class="glow glow--green svelte-dwy068" aria-hidden="true"></div> <div class="glow glow--blue svelte-dwy068" aria-hidden="true"></div> <div class="grid-bg svelte-dwy068" aria-hidden="true"></div> <div class="grain svelte-dwy068" aria-hidden="true"></div><!----> <!--[--><main class="container svelte-15ehqgt"><nav aria-label="Breadcrumb" class="breadcrumbs svelte-1jovwxm"><ol class="svelte-1jovwxm"><!--[--><li class="svelte-1jovwxm"><!--[0--><a href="../" class="svelte-1jovwxm">home</a><!--]--> <!--[0--><span class="sep svelte-1jovwxm" aria-hidden="true">/</span><!--]--></li><li class="svelte-1jovwxm"><!--[0--><a href="../portfolio" class="svelte-1jovwxm">portfolio</a><!--]--> <!--[0--><span class="sep svelte-1jovwxm" aria-hidden="true">/</span><!--]--></li><li class="svelte-1jovwxm"><!--[-1--><span aria-current="page" class="svelte-1jovwxm">dodgeball</span><!--]--> <!--[-1--><!--]--></li><!--]--></ol></nav><!----> <section class="header svelte-15ehqgt"><p class="label svelte-15ehqgt">// project</p> <h1 class="heading svelte-15ehqgt">DodgeBall</h1></section> <section class="hero svelte-15ehqgt"><img src="/img/dodgeball/hero.jpg" alt="DodgeBall" class="svelte-15ehqgt"/></section> <div class="body svelte-15ehqgt"><!--[0--><section class="description svelte-15ehqgt"><!----><h2>Overview</h2>
+<p>DodgeBall is a custom Garry&#39;s Mod gamemode built in Lua that recreates dodgeball as a complete round-based multiplayer experience inside the sandbox engine.</p>
+<p>Rather than functioning as a simple weapon or minigame script, the project defines a full gameplay loop with scoring, round flow, ball interaction rules, bot support, admin controls, and map rotation behaviour.</p>
+<p>It is a good example of general programming skill in gameplay systems design, because it combines rules, state management, AI behaviour, configuration, and player-facing feedback into a coherent multiplayer mode.</p>
+<h2>Key Features</h2>
+<h3>Round-Based Match Flow</h3>
+<ul>
+<li>Players compete until a score cap is reached or the round timer expires</li>
+<li>Winning conditions are enforced by gamemode logic rather than ad-hoc sandbox play</li>
+<li>Supports structured sessions with clear start, end, and winner states</li>
+</ul>
+<h3>Ball Interaction Rules</h3>
+<ul>
+<li>Balls can be thrown, caught, dropped, and picked up according to timing-based rules</li>
+<li>Catching requires correct player state and precision timing</li>
+<li>Bounced balls become interactable after a delay, allowing rebound and recovery play</li>
+<li>Uncollected balls are cleaned up after a configurable period</li>
+</ul>
+<h3>Player Flow and Equipment Recovery</h3>
+<ul>
+<li>If a player does not pick up a ball after a period of time, the mode gives them one</li>
+<li>Keeps the match moving and prevents gameplay from stalling</li>
+<li>Reduces downtime and supports a more reliable competitive loop</li>
+</ul>
+<h3>Bot AI</h3>
+<ul>
+<li>Includes built-in bot support with configurable difficulty</li>
+<li>Bots can be enabled, disabled, added, or removed through commands</li>
+<li>Makes the gamemode usable for testing, small servers, and non-full lobbies</li>
+</ul>
+<h3>Admin and Server Tooling</h3>
+<ul>
+<li>Includes a primitive admin menu</li>
+<li>Includes optional map voting and MOTD systems</li>
+<li>Exposes console commands for ending rounds and controlling bots</li>
+<li>Allows operators to manage the mode without editing code directly</li>
+</ul>
+<h3>Feedback and Presentation</h3>
+<ul>
+<li>Includes kill announcer events such as first blood and multi-kill callouts</li>
+<li>Improves match pacing and gives the mode a stronger arcade identity</li>
+<li>Adds player feedback beyond basic damage and death events</li>
+</ul>
+<h2>Architecture</h2>
+<p>The gamemode layers a structured competitive ruleset on top of Garry&#39;s Mod&#39;s sandbox systems.</p>
+<pre><code class="language-text">Player Input + Ball Entities
+        -&gt;
+Gamemode Rules and Round State
+        -&gt;
+Score / Timer / Win Conditions
+        -&gt;
+Bot Logic + Admin Controls
+        -&gt;
+Match Outcome and Rotation Flow
+</code></pre>
+<h2>Technical Highlights</h2>
+<h3>Full Gamemode Programming</h3>
+<p>This project is more substantial than a typical addon because it defines a complete gamemode rather than one isolated mechanic.</p>
+<p>That includes:</p>
+<ul>
+<li>scoring logic</li>
+<li>round state transitions</li>
+<li>player equipment flow</li>
+<li>ball lifecycle rules</li>
+<li>bot behaviour</li>
+<li>map and server utility features</li>
+</ul>
+<h3>Rule-Driven Gameplay Design</h3>
+<p>Dodgeball only works well when the rules are explicit and enforced consistently.</p>
+<p>The gamemode therefore had to define and coordinate:</p>
+<ul>
+<li>when a ball counts as catchable</li>
+<li>when it becomes pick-up eligible after a bounce</li>
+<li>when it should be removed from the world</li>
+<li>when a replacement ball should be issued</li>
+<li>how wins and round endings are resolved</li>
+</ul>
+<p>This is a strong example of translating a real-world game into deterministic game logic.</p>
+<h3>Bot and Multiplayer Support</h3>
+<p>Supporting bots inside a multiplayer Garry&#39;s Mod gamemode adds a layer of complexity beyond player-only scripting.</p>
+<p>Bot support improves the project as a programming showcase because it demonstrates:</p>
+<ul>
+<li>state-aware AI behaviour</li>
+<li>game loop participation by non-player agents</li>
+<li>configurable difficulty and control</li>
+<li>support for incomplete or test lobbies</li>
+</ul>
+<h3>Operator-Focused Controls</h3>
+<p>The project includes administrative and server-facing tools such as map voting, menu toggles, and console commands.</p>
+<p>That makes it practical for actual community use rather than only as a local prototype or proof of concept.</p>
+<h2>Example Use Cases</h2>
+<h3>Community Server Gamemode</h3>
+<ul>
+<li>Run structured dodgeball matches on a Garry&#39;s Mod server</li>
+<li>Offer a distinct rules-based experience separate from sandbox play</li>
+</ul>
+<h3>Bot-Assisted Testing and Play</h3>
+<ul>
+<li>Use bots to test balance and match flow</li>
+<li>Fill lobbies when there are not enough real players</li>
+</ul>
+<h3>Event or Minigame Rotation</h3>
+<ul>
+<li>Add the gamemode as part of a larger server rotation</li>
+<li>Use score caps and timers to support short, replayable sessions</li>
+</ul>
+<h2>Problem Solved</h2>
+<p>Garry&#39;s Mod makes it easy to spawn props and improvise games, but informal play usually lacks:</p>
+<ul>
+<li>enforced rules</li>
+<li>reliable scoring</li>
+<li>proper round flow</li>
+<li>consistent feedback</li>
+<li>server controls</li>
+</ul>
+<p>DodgeBall solves that by turning a familiar real-world game into a reusable multiplayer system with explicit mechanics and match structure.</p>
+<h2>Design Philosophy</h2>
+<ul>
+<li><strong>Simple concept, solid rules</strong>: the game idea is easy to understand, but the implementation should feel dependable.</li>
+<li><strong>Fast feedback</strong>: keep players active and reduce downtime where possible.</li>
+<li><strong>Server-ready</strong>: include the controls needed for actual multiplayer hosting.</li>
+<li><strong>Replayable by design</strong>: use score caps, timers, and bots to support repeated short matches.</li>
+</ul>
+<h2>Outcome</h2>
+<p>DodgeBall was released on the Steam Workshop as a complete Garry&#39;s Mod gamemode and published alongside its source code on GitHub.</p>
+<p>It remains a strong portfolio example of:</p>
+<ul>
+<li>Lua gameplay programming</li>
+<li>multiplayer rules implementation</li>
+<li>game state management</li>
+<li>bot integration</li>
+<li>user-facing server tooling</li>
+</ul>
+<h2>Video Showcase</h2>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--border);border-radius:12px;background:var(--card-bg);">
+  <iframe
+    src="https://www.youtube.com/embed/737CeAHpYcw"
+    title="DodgeBall video showcase"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div><!----></section><!--]--> <aside class="sidebar svelte-15ehqgt"><!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Details</p> <!--[0--><p class="meta svelte-15ehqgt"><span class="meta-label svelte-15ehqgt">Status</span> <span class="status-badge svelte-15ehqgt status-active"><span class="status-dot svelte-15ehqgt" aria-hidden="true"></span> Active</span></p><!--]--> <!--[0--><p class="meta svelte-15ehqgt"><span class="meta-label svelte-15ehqgt">Date</span> <span class="meta-badge svelte-15ehqgt">2015</span></p><!--]--></div><!--]--> <!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Skills</p> <div class="skills svelte-15ehqgt"><!--[--><!--$s1--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=lua" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #2f6feb" aria-hidden="true"></span><!--]--> <span>lua</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s2--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=gui" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #0ea5e9" aria-hidden="true"></span><!--]--> <span>gui</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--]--></div></div><!--]--> <!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Links</p> <div class="links svelte-15ehqgt"><!--[0--><!--[-1--><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=473793126" target="_blank" rel="external noopener noreferrer" class="btn btn-primary svelte-15ehqgt"><!--[-1--><!--]--><!----> <span>Live</span></a><!--]--><!--]--> <!--[0--><!--[-1--><a href="https://github.com/mattkrins/dodgeball" target="_blank" rel="external noopener noreferrer" class="btn btn-secondary svelte-15ehqgt"><!--[-1--><!--]--><!----> <span>GitHub</span></a><!--]--><!--]--></div></div><!--]--></aside></div> <!--[0--><section class="gallery svelte-15ehqgt"><h2 class="section-heading svelte-15ehqgt">Gallery</h2> <div class="gallery-grid svelte-15ehqgt"><!--[--><figure class="gallery-item svelte-15ehqgt" style="--i: 0"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Gamemode logo in lightbox"><img src="/img/dodgeball/logo.jpg" alt="Gamemode logo" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Gamemode logo</figcaption><!--]--></figure><figure class="gallery-item svelte-15ehqgt" style="--i: 1"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Team selection menu in lightbox"><img src="/img/dodgeball/team menu.jpg" alt="Team selection menu" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Team selection menu</figcaption><!--]--></figure><figure class="gallery-item svelte-15ehqgt" style="--i: 2"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Standard dodgeball match gameplay in lightbox"><img src="/img/dodgeball/gameplay.jpg" alt="Standard dodgeball match gameplay" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Standard dodgeball match gameplay</figcaption><!--]--></figure><figure class="gallery-item svelte-15ehqgt" style="--i: 3"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Chaotic gameplay with too many bots in lightbox"><img src="/img/dodgeball/gameplay chaos.jpg" alt="Chaotic gameplay with too many bots" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Chaotic gameplay with too many bots</figcaption><!--]--></figure><!--]--></div></section> <!--[-1--><!--]--><!----><!--]--> <footer class="footer svelte-15ehqgt"><a href="../portfolio" class="back-link svelte-15ehqgt">← Back to portfolio</a></footer></main><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1ozp1g6 = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.DfcbAm-n.js"),
+						import("../_app/immutable/entry/app.W3GNSKVm.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,{type:"data",data:{project:{slug:"dodgeball",title:"DodgeBall",summary:"A Garry's Mod gamemode built in Lua that turns classic dodgeball into a structured multiplayer ruleset with scoring, bot AI, admin controls, and round-based gameplay.",descriptionHtml:"\u003Ch2>Overview\u003C/h2>\n\u003Cp>DodgeBall is a custom Garry&#39;s Mod gamemode built in Lua that recreates dodgeball as a complete round-based multiplayer experience inside the sandbox engine.\u003C/p>\n\u003Cp>Rather than functioning as a simple weapon or minigame script, the project defines a full gameplay loop with scoring, round flow, ball interaction rules, bot support, admin controls, and map rotation behaviour.\u003C/p>\n\u003Cp>It is a good example of general programming skill in gameplay systems design, because it combines rules, state management, AI behaviour, configuration, and player-facing feedback into a coherent multiplayer mode.\u003C/p>\n\u003Ch2>Key Features\u003C/h2>\n\u003Ch3>Round-Based Match Flow\u003C/h3>\n\u003Cul>\n\u003Cli>Players compete until a score cap is reached or the round timer expires\u003C/li>\n\u003Cli>Winning conditions are enforced by gamemode logic rather than ad-hoc sandbox play\u003C/li>\n\u003Cli>Supports structured sessions with clear start, end, and winner states\u003C/li>\n\u003C/ul>\n\u003Ch3>Ball Interaction Rules\u003C/h3>\n\u003Cul>\n\u003Cli>Balls can be thrown, caught, dropped, and picked up according to timing-based rules\u003C/li>\n\u003Cli>Catching requires correct player state and precision timing\u003C/li>\n\u003Cli>Bounced balls become interactable after a delay, allowing rebound and recovery play\u003C/li>\n\u003Cli>Uncollected balls are cleaned up after a configurable period\u003C/li>\n\u003C/ul>\n\u003Ch3>Player Flow and Equipment Recovery\u003C/h3>\n\u003Cul>\n\u003Cli>If a player does not pick up a ball after a period of time, the mode gives them one\u003C/li>\n\u003Cli>Keeps the match moving and prevents gameplay from stalling\u003C/li>\n\u003Cli>Reduces downtime and supports a more reliable competitive loop\u003C/li>\n\u003C/ul>\n\u003Ch3>Bot AI\u003C/h3>\n\u003Cul>\n\u003Cli>Includes built-in bot support with configurable difficulty\u003C/li>\n\u003Cli>Bots can be enabled, disabled, added, or removed through commands\u003C/li>\n\u003Cli>Makes the gamemode usable for testing, small servers, and non-full lobbies\u003C/li>\n\u003C/ul>\n\u003Ch3>Admin and Server Tooling\u003C/h3>\n\u003Cul>\n\u003Cli>Includes a primitive admin menu\u003C/li>\n\u003Cli>Includes optional map voting and MOTD systems\u003C/li>\n\u003Cli>Exposes console commands for ending rounds and controlling bots\u003C/li>\n\u003Cli>Allows operators to manage the mode without editing code directly\u003C/li>\n\u003C/ul>\n\u003Ch3>Feedback and Presentation\u003C/h3>\n\u003Cul>\n\u003Cli>Includes kill announcer events such as first blood and multi-kill callouts\u003C/li>\n\u003Cli>Improves match pacing and gives the mode a stronger arcade identity\u003C/li>\n\u003Cli>Adds player feedback beyond basic damage and death events\u003C/li>\n\u003C/ul>\n\u003Ch2>Architecture\u003C/h2>\n\u003Cp>The gamemode layers a structured competitive ruleset on top of Garry&#39;s Mod&#39;s sandbox systems.\u003C/p>\n\u003Cpre>\u003Ccode class=\"language-text\">Player Input + Ball Entities\n        -&gt;\nGamemode Rules and Round State\n        -&gt;\nScore / Timer / Win Conditions\n        -&gt;\nBot Logic + Admin Controls\n        -&gt;\nMatch Outcome and Rotation Flow\n\u003C/code>\u003C/pre>\n\u003Ch2>Technical Highlights\u003C/h2>\n\u003Ch3>Full Gamemode Programming\u003C/h3>\n\u003Cp>This project is more substantial than a typical addon because it defines a complete gamemode rather than one isolated mechanic.\u003C/p>\n\u003Cp>That includes:\u003C/p>\n\u003Cul>\n\u003Cli>scoring logic\u003C/li>\n\u003Cli>round state transitions\u003C/li>\n\u003Cli>player equipment flow\u003C/li>\n\u003Cli>ball lifecycle rules\u003C/li>\n\u003Cli>bot behaviour\u003C/li>\n\u003Cli>map and server utility features\u003C/li>\n\u003C/ul>\n\u003Ch3>Rule-Driven Gameplay Design\u003C/h3>\n\u003Cp>Dodgeball only works well when the rules are explicit and enforced consistently.\u003C/p>\n\u003Cp>The gamemode therefore had to define and coordinate:\u003C/p>\n\u003Cul>\n\u003Cli>when a ball counts as catchable\u003C/li>\n\u003Cli>when it becomes pick-up eligible after a bounce\u003C/li>\n\u003Cli>when it should be removed from the world\u003C/li>\n\u003Cli>when a replacement ball should be issued\u003C/li>\n\u003Cli>how wins and round endings are resolved\u003C/li>\n\u003C/ul>\n\u003Cp>This is a strong example of translating a real-world game into deterministic game logic.\u003C/p>\n\u003Ch3>Bot and Multiplayer Support\u003C/h3>\n\u003Cp>Supporting bots inside a multiplayer Garry&#39;s Mod gamemode adds a layer of complexity beyond player-only scripting.\u003C/p>\n\u003Cp>Bot support improves the project as a programming showcase because it demonstrates:\u003C/p>\n\u003Cul>\n\u003Cli>state-aware AI behaviour\u003C/li>\n\u003Cli>game loop participation by non-player agents\u003C/li>\n\u003Cli>configurable difficulty and control\u003C/li>\n\u003Cli>support for incomplete or test lobbies\u003C/li>\n\u003C/ul>\n\u003Ch3>Operator-Focused Controls\u003C/h3>\n\u003Cp>The project includes administrative and server-facing tools such as map voting, menu toggles, and console commands.\u003C/p>\n\u003Cp>That makes it practical for actual community use rather than only as a local prototype or proof of concept.\u003C/p>\n\u003Ch2>Example Use Cases\u003C/h2>\n\u003Ch3>Community Server Gamemode\u003C/h3>\n\u003Cul>\n\u003Cli>Run structured dodgeball matches on a Garry&#39;s Mod server\u003C/li>\n\u003Cli>Offer a distinct rules-based experience separate from sandbox play\u003C/li>\n\u003C/ul>\n\u003Ch3>Bot-Assisted Testing and Play\u003C/h3>\n\u003Cul>\n\u003Cli>Use bots to test balance and match flow\u003C/li>\n\u003Cli>Fill lobbies when there are not enough real players\u003C/li>\n\u003C/ul>\n\u003Ch3>Event or Minigame Rotation\u003C/h3>\n\u003Cul>\n\u003Cli>Add the gamemode as part of a larger server rotation\u003C/li>\n\u003Cli>Use score caps and timers to support short, replayable sessions\u003C/li>\n\u003C/ul>\n\u003Ch2>Problem Solved\u003C/h2>\n\u003Cp>Garry&#39;s Mod makes it easy to spawn props and improvise games, but informal play usually lacks:\u003C/p>\n\u003Cul>\n\u003Cli>enforced rules\u003C/li>\n\u003Cli>reliable scoring\u003C/li>\n\u003Cli>proper round flow\u003C/li>\n\u003Cli>consistent feedback\u003C/li>\n\u003Cli>server controls\u003C/li>\n\u003C/ul>\n\u003Cp>DodgeBall solves that by turning a familiar real-world game into a reusable multiplayer system with explicit mechanics and match structure.\u003C/p>\n\u003Ch2>Design Philosophy\u003C/h2>\n\u003Cul>\n\u003Cli>\u003Cstrong>Simple concept, solid rules\u003C/strong>: the game idea is easy to understand, but the implementation should feel dependable.\u003C/li>\n\u003Cli>\u003Cstrong>Fast feedback\u003C/strong>: keep players active and reduce downtime where possible.\u003C/li>\n\u003Cli>\u003Cstrong>Server-ready\u003C/strong>: include the controls needed for actual multiplayer hosting.\u003C/li>\n\u003Cli>\u003Cstrong>Replayable by design\u003C/strong>: use score caps, timers, and bots to support repeated short matches.\u003C/li>\n\u003C/ul>\n\u003Ch2>Outcome\u003C/h2>\n\u003Cp>DodgeBall was released on the Steam Workshop as a complete Garry&#39;s Mod gamemode and published alongside its source code on GitHub.\u003C/p>\n\u003Cp>It remains a strong portfolio example of:\u003C/p>\n\u003Cul>\n\u003Cli>Lua gameplay programming\u003C/li>\n\u003Cli>multiplayer rules implementation\u003C/li>\n\u003Cli>game state management\u003C/li>\n\u003Cli>bot integration\u003C/li>\n\u003Cli>user-facing server tooling\u003C/li>\n\u003C/ul>\n\u003Ch2>Video Showcase\u003C/h2>\n\u003Cdiv style=\"position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--border);border-radius:12px;background:var(--card-bg);\">\n  \u003Ciframe\n    src=\"https://www.youtube.com/embed/737CeAHpYcw\"\n    title=\"DodgeBall video showcase\"\n    style=\"position:absolute;top:0;left:0;width:100%;height:100%;border:0;\"\n    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n    referrerpolicy=\"strict-origin-when-cross-origin\"\n    allowfullscreen\n  >\u003C/iframe>\n\u003C/div>",skills:[{label:"lua",color:"#2f6feb",description:"Uses the Lua programming language."},{label:"gui",color:"#0ea5e9",description:"Uses an extensive Graphical User Interface (GUI) for user interaction."}],hero:{src:"/img/dodgeball/hero.jpg",alt:"DodgeBall"},gallery:[{src:"/img/dodgeball/logo.jpg",desc:"Gamemode logo"},{src:"/img/dodgeball/team menu.jpg",desc:"Team selection menu"},{src:"/img/dodgeball/gameplay.jpg",desc:"Standard dodgeball match gameplay"},{src:"/img/dodgeball/gameplay chaos.jpg",desc:"Chaotic gameplay with too many bots"}],links:{live:"https://steamcommunity.com/sharedfiles/filedetails/?id=473793126",repo:"https://github.com/mattkrins/dodgeball"},date:2015,status:"Active"}},uses:{params:["slug"]}}],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

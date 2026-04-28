@@ -8,6 +8,8 @@ const config = {
 	},
 	kit: {
 		adapter: adapter({
+			pages: 'docs',
+			assets: 'docs',
 			fallback: '404.html'
 		}),
 		prerender: {

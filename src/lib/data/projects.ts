@@ -22,7 +22,7 @@ interface ProjectFrontmatter {
 }
 
 function splitFrontmatter(raw: string): { meta: ProjectFrontmatter; body: string } {
-  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) throw new Error('Missing frontmatter in project markdown file');
   return { meta: parseYaml(m[1]) as ProjectFrontmatter, body: m[2].trim() };
 }
