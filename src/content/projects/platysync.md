@@ -7,6 +7,51 @@ hero: /img/platysync/hero.jpg
 skills: [typescript, automation, react, rest, api, gui]
 links:
   repo: https://github.com/mattkrins/platysync
+gallery:
+  - src: /img/platysync/splash-screen-schema-manager.jpg
+    desc: Schema manager and splash screen
+  - src: /img/platysync/add-blueprint.jpg
+    desc: Adding a blueprint
+  - src: /img/platysync/connectors.jpg
+    desc: Connectors overview
+  - src: /img/platysync/add-connector.jpg
+    desc: Adding a connector
+  - src: /img/platysync/add-connector-customise-headers.jpg
+    desc: Customising connector headers
+  - src: /img/platysync/add-connector-template-explorer.jpg
+    desc: Connector template explorer
+  - src: /img/platysync/edit-connector.jpg
+    desc: Editing a connector
+  - src: /img/platysync/secret-manager.jpg
+    desc: Secret manager
+  - src: /img/platysync/edit-file.jpg
+    desc: Editing a file data source
+  - src: /img/platysync/rules.jpg
+    desc: Rules overview
+  - src: /img/platysync/edit-rule-data-sources.jpg
+    desc: Configuring rule data sources
+  - src: /img/platysync/edit-rule-evaluation-conditions.jpg
+    desc: Editing rule evaluation conditions
+  - src: /img/platysync/edit-rule-add-actions.jpg
+    desc: Adding rule actions
+  - src: /img/platysync/edit-rule-customise-columns.jpg
+    desc: Customising rule columns
+  - src: /img/platysync/edit-rule-run-test.jpg
+    desc: Testing a rule run
+  - src: /img/platysync/edit-rule-run-test-results.jpg
+    desc: Rule test results
+  - src: /img/platysync/evaluate-rule-results.jpg
+    desc: Evaluated rule results
+  - src: /img/platysync/rule-run-results-explore.jpg
+    desc: Exploring rule run results
+  - src: /img/platysync/scheduler.jpg
+    desc: Scheduler interface
+  - src: /img/platysync/log-browser.jpg
+    desc: Log browser
+  - src: /img/platysync/app-settings.jpg
+    desc: Application settings
+  - src: /img/platysync/dictionary.jpg
+    desc: Dictionary and template scope explorer
 ---
 
 ## Overview
