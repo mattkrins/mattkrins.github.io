@@ -53,7 +53,7 @@
 
 	{#if status === 404 && redirectState === 'checking' && attemptedKey}
 		<p class="subtitle">
-			Checking whether <span class="code">/{attemptedKey}</span> is one of your saved redirect aliases.
+			Checking whether <span class="code">/{attemptedKey}</span> is a redirect alias.
 		</p>
 	{:else}
 		<p class="subtitle">{errorMessage}</p>
@@ -63,26 +63,19 @@
 		<div class="card">
 			{#if redirectState === 'checking' && attemptedKey}
 				<p class="card-title">Looking up redirect alias</p>
-				<p class="card-copy">
-					Querying your GitHub redirect map before falling back to the normal 404 page.
-				</p>
 			{:else if attemptedKey}
-				<p class="card-title">No redirect found for <span class="code">/{attemptedKey}</span></p>
+				<p class="card-title">No page or redirect found for <span class="code">/{attemptedKey}</span></p>
 				<p class="card-copy">
-					The alias is missing, invalid, or GitHub could not be reached, so this path stays a proper not-found page.
+					The Codex Astartes does not support this request.
 				</p>
 			{:else}
 				<p class="card-title">This route is not part of the site</p>
-				<p class="card-copy">
-					Only single-segment aliases such as <span class="code">/github</span> are checked against your redirect map.
-				</p>
 			{/if}
 		</div>
 	{/if}
 
 	<div class="actions">
 		<a href={resolve('/')} class="btn btn--primary">Back home</a>
-		<a href={resolve('/portfolio')} class="btn btn--secondary">View portfolio</a>
 	</div>
 </main>
 
@@ -179,23 +172,12 @@
 		color: var(--bg);
 	}
 
-	.btn--secondary {
-		border: 1px solid var(--border);
-		color: var(--fg);
-		background: transparent;
-	}
-
 	.btn:hover {
 		transform: translateY(-2px);
 	}
 
 	.btn--primary:hover {
 		box-shadow: 0 8px 30px rgba(196, 240, 90, 0.22);
-	}
-
-	.btn--secondary:hover {
-		border-color: var(--fg);
-		box-shadow: 0 8px 30px rgba(255, 255, 255, 0.06);
 	}
 
 	.btn:focus-visible {
