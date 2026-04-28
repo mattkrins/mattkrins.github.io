@@ -3,8 +3,19 @@ title: Edval Canvas Bridge
 summary: A TypeScript monorepo that synchronises Edval timetable exports and CASES21 data into Canvas SIS imports, with both a CLI sync service and a React admin GUI for configuration, preview, scheduling, and controlled uploads.
 date: 2026
 status: Active
-hero: /og-card.jpg
+hero: /img/edval-canvas-bridge/hero.jpg
 skills: [typescript, react, rest, api, gui, cli, automation]
+gallery:
+  - src: /img/edval-canvas-bridge/dashboard.jpg
+    desc: Admin dashboard
+  - src: /img/edval-canvas-bridge/config.jpg
+    desc: Configuration editor
+  - src: /img/edval-canvas-bridge/sync-review.jpg
+    desc: Sync review and preview workflow
+  - src: /img/edval-canvas-bridge/sync-complete-import-error.jpg
+    desc: Completed sync with SIS import error details
+  - src: /img/edval-canvas-bridge/logs.jpg
+    desc: Log viewer
 ---
 
 ## Overview
