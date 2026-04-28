@@ -1,0 +1,16 @@
+{
+  "name": "Matt Krins",
+  "short_name": "Matt Krins",
+  "description": "Programmer, SysAdmin, and Educator building systems and the people who understand them.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0c0f",
+  "theme_color": "#c4f05a",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png"
+    }
+  ]
+}

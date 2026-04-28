@@ -1,0 +1,320 @@
+.home-page {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 4rem;
+	align-items: center;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 2rem;
+	min-height: 100vh;
+	animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeUp {
+	from { opacity: 0; transform: translateY(30px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+.home-page .photo-wrapper {
+	position: relative;
+	width: 260px;
+	height: 320px;
+	animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.home-page .photo-frame {
+	width: 100%;
+	height: 100%;
+	border: 2px solid var(--border);
+	border-radius: 12px;
+	overflow: hidden;
+	position: relative;
+	background: var(--card-bg);
+}
+
+.home-page .photo-frame img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+	display: block;
+	filter: grayscale(30%) contrast(1.05);
+	transition: filter 0.5s ease;
+}
+
+.home-page .photo-wrapper:hover .photo-frame img {
+	filter: grayscale(0%) contrast(1.1);
+}
+
+.home-page .photo-wrapper::before {
+	content: '+';
+	position: absolute;
+	top: -14px;
+	left: -14px;
+	font-size: 1rem;
+	color: var(--accent);
+	font-family: 'JetBrains Mono', monospace;
+	font-weight: 300;
+	z-index: 2;
+}
+
+.home-page .photo-wrapper::after {
+	content: '+';
+	position: absolute;
+	bottom: -14px;
+	right: -14px;
+	font-size: 1rem;
+	color: var(--accent);
+	font-family: 'JetBrains Mono', monospace;
+	font-weight: 300;
+	z-index: 2;
+}
+
+.home-page .status {
+	position: absolute;
+	bottom: -28px;
+	left: 0;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 0.7rem;
+	color: var(--muted);
+	font-family: var(--font-code);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.home-page .status-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--accent);
+	box-shadow: 0 0 8px var(--accent);
+	animation: pulse 2.5s ease-in-out infinite;
+	flex-shrink: 0;
+}
+
+@keyframes pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.3; }
+}
+
+.home-page .content {
+	animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.home-page .greeting {
+	font-size: 0.8rem;
+	color: var(--accent);
+	font-family: var(--font-code);
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	font-weight: 500;
+	margin-bottom: 1rem;
+}
+
+.home-page .name {
+	font-family: var(--font-heading);
+	font-size: 5rem;
+	font-weight: 400;
+	line-height: 1.04;
+	color: var(--fg);
+	margin-bottom: 1.2rem;
+	letter-spacing: -0.005em;
+}
+
+.home-page .roles {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin-bottom: 2.5rem;
+}
+
+.home-page .tagline {
+	font-family: var(--font-ui);
+	font-size: 1.15rem;
+	color: var(--accent);
+	line-height: 1.6;
+	margin-bottom: 2.5rem;
+	max-width: 380px;
+	font-weight: 400;
+}
+
+.home-page .actions {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.home-page .btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.8rem 1.6rem;
+	font-family: var(--font-ui);
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	text-decoration: none;
+	border-radius: 8px;
+	transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background 0.35s ease;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	will-change: transform;
+}
+
+.home-page .btn::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+	opacity: 0;
+	transition: opacity 0.35s ease;
+	z-index: -1;
+}
+
+.home-page .btn:hover::after { opacity: 1; }
+
+.home-page .btn--primary {
+	background: var(--accent);
+	color: var(--bg);
+	border: none;
+}
+
+.home-page .btn--primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 30px rgba(196, 240, 90, 0.25);
+}
+
+.home-page .btn--secondary {
+	background: transparent;
+	color: var(--fg);
+	border: 1px solid var(--border);
+}
+
+.home-page .btn--secondary:hover {
+	border-color: var(--fg);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+}
+
+.home-page .btn:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.home-page .dropdown {
+	position: relative;
+}
+
+.home-page .dropdown-trigger {
+	min-width: 142px;
+	justify-content: space-between;
+}
+
+.home-page .dropdown-chevron {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 12px;
+	height: 12px;
+	flex-shrink: 0;
+	transition: transform 0.2s ease;
+	transform-origin: center;
+}
+
+.home-page .dropdown-chevron.open {
+	transform: rotate(180deg);
+}
+
+.home-page .dropdown-menu {
+	position: absolute;
+	top: calc(100% + 8px);
+	left: 0;
+	background: var(--card-bg, #111115);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 4px;
+	min-width: 160px;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	animation: fadeUp 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-page .dropdown-item {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.6rem 0.8rem;
+	font-family: var(--font-ui);
+	font-size: 0.78rem;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+	color: var(--fg);
+	text-decoration: none;
+	border-radius: 6px;
+	transition: background 0.2s ease;
+}
+
+.home-page .dropdown-item:hover {
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.home-page .dropdown-item:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.home-page,
+	.home-page .photo-wrapper,
+	.home-page .content {
+		animation: none;
+	}
+
+	.home-page .btn,
+	.home-page .status-dot {
+		transition: none;
+	}
+
+	.home-page .status-dot {
+		animation: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.home-page {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		text-align: center;
+		gap: 3rem;
+		padding: 3rem 1.5rem 6rem;
+	}
+
+	.home-page .photo-wrapper {
+		width: 200px;
+		height: 250px;
+	}
+
+	.home-page .name { font-size: 3.5rem; }
+
+	.home-page .roles { justify-content: center; }
+
+	.home-page .tagline {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.home-page .actions { justify-content: center; }
+
+	.home-page .status {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

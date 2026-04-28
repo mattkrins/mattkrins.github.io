@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#c4f05a" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link href="../_app/immutable/entry/start.C625nudI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsaKfy2t.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BBVsvCfH.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.Ceb6yZR4.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DXLwiZ0H.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.D2zL3Mux.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/4.Dtn5KDvW.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CR659iHQ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C-9AiAZG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DYagiPji.js" rel="modulepreload">
+		<!--15ehqgt--><meta name="description" content="A php web application to submit warranties to JB-HiFi. Reverse engineered from the source from their own online portal to create an easier to use interface."/> <meta property="og:title" content="JB-HiFi-Warranty — Matt Krins"/> <meta property="og:description" content="A php web application to submit warranties to JB-HiFi. Reverse engineered from the source from their own online portal to create an easier to use interface."/> <meta property="og:image" content="/img/jb-hifi-warranty/hero.jpg"/> <link rel="canonical" href="https://mattkrins.com/portfolio/jb-hifi-warranty"/><!----><title>JB-HiFi-Warranty — Matt Krins</title>
+		<link href="../_app/immutable/assets/0.BUHmNOF9.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Tooltip.87K-KfYa.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Icon.CMdpMAir.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Breadcrumbs.-iJrWxRc.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/4.CQIi3mpk.css" rel="stylesheet">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[0--><!--[--><!--[-1--><!--]--> <!--[-1--><!--]--> <div class="glow glow--green svelte-dwy068" aria-hidden="true"></div> <div class="glow glow--blue svelte-dwy068" aria-hidden="true"></div> <div class="grid-bg svelte-dwy068" aria-hidden="true"></div> <div class="grain svelte-dwy068" aria-hidden="true"></div><!----> <!--[--><main class="container svelte-15ehqgt"><nav aria-label="Breadcrumb" class="breadcrumbs svelte-1jovwxm"><ol class="svelte-1jovwxm"><!--[--><li class="svelte-1jovwxm"><!--[0--><a href="../" class="svelte-1jovwxm">home</a><!--]--> <!--[0--><span class="sep svelte-1jovwxm" aria-hidden="true">/</span><!--]--></li><li class="svelte-1jovwxm"><!--[0--><a href="../portfolio" class="svelte-1jovwxm">portfolio</a><!--]--> <!--[0--><span class="sep svelte-1jovwxm" aria-hidden="true">/</span><!--]--></li><li class="svelte-1jovwxm"><!--[-1--><span aria-current="page" class="svelte-1jovwxm">jb-hifi-warranty</span><!--]--> <!--[-1--><!--]--></li><!--]--></ol></nav><!----> <section class="header svelte-15ehqgt"><p class="label svelte-15ehqgt">// project</p> <h1 class="heading svelte-15ehqgt">JB-HiFi-Warranty</h1></section> <section class="hero svelte-15ehqgt"><img src="/img/jb-hifi-warranty/hero.jpg" alt="JB-HiFi-Warranty" class="svelte-15ehqgt"/></section> <div class="body svelte-15ehqgt"><!--[0--><section class="description svelte-15ehqgt"><!----><h2>Overview</h2>
+<p>JB Hi-Fi Warranty Tracker is a purpose-built application designed to manage warranty claims, repairs, and product tracking within a retail or service environment.</p>
+<p>It centralises warranty workflows, allowing staff to track devices from initial claim through to resolution, while maintaining clear records of status, ownership, and outcomes.</p>
+<p>The system replaces manual tracking methods (spreadsheets, notes, ad-hoc systems) with a structured, auditable workflow.</p>
+<h2>Key Features</h2>
+<h3>Warranty Tracking</h3>
+<ul>
+<li>Track warranty claims end-to-end</li>
+<li>Maintain status (submitted, in repair, approved, rejected, completed)</li>
+<li>Link claims to devices and customers</li>
+</ul>
+<h3>Device Management</h3>
+<ul>
+<li>Record product details and serial numbers</li>
+<li>Track ownership and claim history</li>
+<li>Maintain full lifecycle visibility</li>
+</ul>
+<h3>Workflow Management</h3>
+<ul>
+<li>Structured claim lifecycle</li>
+<li>Status-based progression</li>
+<li>Clear visibility for staff and administrators</li>
+</ul>
+<h3>Record Keeping</h3>
+<ul>
+<li>Centralised storage of warranty data</li>
+<li>Notes and updates per claim</li>
+<li>Historical audit trail</li>
+</ul>
+<h2>Architecture</h2>
+<pre><code class="language-text">[ Frontend Interface ]
+        ↓
+[ Application Logic ]
+        ↓
+[ Database ]
+</code></pre>
+<h2>Technology Stack</h2>
+<ul>
+<li>Written in PHP</li>
+<li>LDAP connector</li>
+<li>JavaScript / Web stack</li>
+<li>lite database</li>
+</ul>
+<h2>Technical Highlights</h2>
+<h3>Structured Workflow Model</h3>
+<ul>
+<li>Claims move through defined states</li>
+<li>Reduces ambiguity in processing</li>
+<li>Enables consistent handling of warranties</li>
+</ul>
+<h3>Data-Centric Design</h3>
+<ul>
+<li>Strong relationships between:<ul>
+<li>Customers</li>
+<li>Devices</li>
+<li>Warranty claims</li>
+</ul>
+</li>
+<li>Ensures traceability</li>
+</ul>
+<h3>Operational Simplicity</h3>
+<ul>
+<li>Designed for day-to-day retail usage</li>
+<li>Minimal friction for staff</li>
+<li>Focus on speed and clarity</li>
+</ul>
+<h2>Example Use Cases</h2>
+<h3>Retail Warranty Processing</h3>
+<ul>
+<li>Staff log a new warranty claim</li>
+<li>Track device through repair process</li>
+<li>Update status and notify stakeholders</li>
+</ul>
+<h3>Service Desk Operations</h3>
+<ul>
+<li>Manage incoming faulty products</li>
+<li>Maintain clear queue of active jobs</li>
+<li>Record outcomes for reporting</li>
+</ul>
+<h3>Device Lifecycle Tracking</h3>
+<ul>
+<li>Maintain history of repairs and claims</li>
+<li>Identify repeat issues</li>
+<li>Improve support decisions</li>
+</ul>
+<h2>Problem Solved</h2>
+<p>Retail warranty workflows often rely on:</p>
+<ul>
+<li>Manual spreadsheets</li>
+<li>Paper records</li>
+<li>Disconnected systems</li>
+</ul>
+<p>This leads to:</p>
+<ul>
+<li>Lost information</li>
+<li>Poor visibility</li>
+<li>Inconsistent processes</li>
+</ul>
+<p>JB Hi-Fi Warranty Tracker solves this by:</p>
+<ul>
+<li>Centralising all warranty data</li>
+<li>Providing structured workflows</li>
+<li>Improving traceability and accountability</li>
+<li>Reducing manual overhead</li>
+</ul>
+<!----></section><!--]--> <aside class="sidebar svelte-15ehqgt"><!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Details</p> <!--[0--><p class="meta svelte-15ehqgt"><span class="meta-label svelte-15ehqgt">Status</span> <span class="status-badge svelte-15ehqgt status-discontinued"><span class="status-dot svelte-15ehqgt" aria-hidden="true"></span> Discontinued</span></p><!--]--> <!--[0--><p class="meta svelte-15ehqgt"><span class="meta-label svelte-15ehqgt">Date</span> <span class="meta-badge svelte-15ehqgt">2016</span></p><!--]--></div><!--]--> <!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Skills</p> <div class="skills svelte-15ehqgt"><!--[--><!--$s1--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=javascript" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #f7df1e" aria-hidden="true"></span><!--]--> <span>javascript</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s2--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=api" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #22c55e" aria-hidden="true"></span><!--]--> <span>api</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s3--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=php" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #777bb4" aria-hidden="true"></span><!--]--> <span>php</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s4--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=html" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #e34f26" aria-hidden="true"></span><!--]--> <span>html</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s5--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=css" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #264de4" aria-hidden="true"></span><!--]--> <span>css</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--]--></div></div><!--]--> <!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Links</p> <div class="links svelte-15ehqgt"><!--[-1--><!--]--> <!--[0--><!--[-1--><a href="https://github.com/mattkrins/JB-HiFi-Warranty" target="_blank" rel="external noopener noreferrer" class="btn btn-secondary svelte-15ehqgt"><!--[-1--><!--]--><!----> <span>GitHub</span></a><!--]--><!--]--></div></div><!--]--></aside></div> <!--[0--><section class="gallery svelte-15ehqgt"><h2 class="section-heading svelte-15ehqgt">Gallery</h2> <div class="gallery-grid svelte-15ehqgt"><!--[--><figure class="gallery-item svelte-15ehqgt" style="--i: 0"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Application dashboard in lightbox"><img src="/img/jb-hifi-warranty/1.png" alt="Application dashboard" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Application dashboard</figcaption><!--]--></figure><!--]--></div></section> <!--[-1--><!--]--><!----><!--]--> <footer class="footer svelte-15ehqgt"><a href="../portfolio" class="back-link svelte-15ehqgt">← Back to portfolio</a></footer></main><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_13upvrq = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.C625nudI.js"),
+						import("../_app/immutable/entry/app.Ceb6yZR4.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,{type:"data",data:{project:{slug:"jb-hifi-warranty",title:"JB-HiFi-Warranty",summary:"A php web application to submit warranties to JB-HiFi. Reverse engineered from the source from their own online portal to create an easier to use interface.",descriptionHtml:"\u003Ch2>Overview\u003C/h2>\n\u003Cp>JB Hi-Fi Warranty Tracker is a purpose-built application designed to manage warranty claims, repairs, and product tracking within a retail or service environment.\u003C/p>\n\u003Cp>It centralises warranty workflows, allowing staff to track devices from initial claim through to resolution, while maintaining clear records of status, ownership, and outcomes.\u003C/p>\n\u003Cp>The system replaces manual tracking methods (spreadsheets, notes, ad-hoc systems) with a structured, auditable workflow.\u003C/p>\n\u003Ch2>Key Features\u003C/h2>\n\u003Ch3>Warranty Tracking\u003C/h3>\n\u003Cul>\n\u003Cli>Track warranty claims end-to-end\u003C/li>\n\u003Cli>Maintain status (submitted, in repair, approved, rejected, completed)\u003C/li>\n\u003Cli>Link claims to devices and customers\u003C/li>\n\u003C/ul>\n\u003Ch3>Device Management\u003C/h3>\n\u003Cul>\n\u003Cli>Record product details and serial numbers\u003C/li>\n\u003Cli>Track ownership and claim history\u003C/li>\n\u003Cli>Maintain full lifecycle visibility\u003C/li>\n\u003C/ul>\n\u003Ch3>Workflow Management\u003C/h3>\n\u003Cul>\n\u003Cli>Structured claim lifecycle\u003C/li>\n\u003Cli>Status-based progression\u003C/li>\n\u003Cli>Clear visibility for staff and administrators\u003C/li>\n\u003C/ul>\n\u003Ch3>Record Keeping\u003C/h3>\n\u003Cul>\n\u003Cli>Centralised storage of warranty data\u003C/li>\n\u003Cli>Notes and updates per claim\u003C/li>\n\u003Cli>Historical audit trail\u003C/li>\n\u003C/ul>\n\u003Ch2>Architecture\u003C/h2>\n\u003Cpre>\u003Ccode class=\"language-text\">[ Frontend Interface ]\n        ↓\n[ Application Logic ]\n        ↓\n[ Database ]\n\u003C/code>\u003C/pre>\n\u003Ch2>Technology Stack\u003C/h2>\n\u003Cul>\n\u003Cli>Written in PHP\u003C/li>\n\u003Cli>LDAP connector\u003C/li>\n\u003Cli>JavaScript / Web stack\u003C/li>\n\u003Cli>lite database\u003C/li>\n\u003C/ul>\n\u003Ch2>Technical Highlights\u003C/h2>\n\u003Ch3>Structured Workflow Model\u003C/h3>\n\u003Cul>\n\u003Cli>Claims move through defined states\u003C/li>\n\u003Cli>Reduces ambiguity in processing\u003C/li>\n\u003Cli>Enables consistent handling of warranties\u003C/li>\n\u003C/ul>\n\u003Ch3>Data-Centric Design\u003C/h3>\n\u003Cul>\n\u003Cli>Strong relationships between:\u003Cul>\n\u003Cli>Customers\u003C/li>\n\u003Cli>Devices\u003C/li>\n\u003Cli>Warranty claims\u003C/li>\n\u003C/ul>\n\u003C/li>\n\u003Cli>Ensures traceability\u003C/li>\n\u003C/ul>\n\u003Ch3>Operational Simplicity\u003C/h3>\n\u003Cul>\n\u003Cli>Designed for day-to-day retail usage\u003C/li>\n\u003Cli>Minimal friction for staff\u003C/li>\n\u003Cli>Focus on speed and clarity\u003C/li>\n\u003C/ul>\n\u003Ch2>Example Use Cases\u003C/h2>\n\u003Ch3>Retail Warranty Processing\u003C/h3>\n\u003Cul>\n\u003Cli>Staff log a new warranty claim\u003C/li>\n\u003Cli>Track device through repair process\u003C/li>\n\u003Cli>Update status and notify stakeholders\u003C/li>\n\u003C/ul>\n\u003Ch3>Service Desk Operations\u003C/h3>\n\u003Cul>\n\u003Cli>Manage incoming faulty products\u003C/li>\n\u003Cli>Maintain clear queue of active jobs\u003C/li>\n\u003Cli>Record outcomes for reporting\u003C/li>\n\u003C/ul>\n\u003Ch3>Device Lifecycle Tracking\u003C/h3>\n\u003Cul>\n\u003Cli>Maintain history of repairs and claims\u003C/li>\n\u003Cli>Identify repeat issues\u003C/li>\n\u003Cli>Improve support decisions\u003C/li>\n\u003C/ul>\n\u003Ch2>Problem Solved\u003C/h2>\n\u003Cp>Retail warranty workflows often rely on:\u003C/p>\n\u003Cul>\n\u003Cli>Manual spreadsheets\u003C/li>\n\u003Cli>Paper records\u003C/li>\n\u003Cli>Disconnected systems\u003C/li>\n\u003C/ul>\n\u003Cp>This leads to:\u003C/p>\n\u003Cul>\n\u003Cli>Lost information\u003C/li>\n\u003Cli>Poor visibility\u003C/li>\n\u003Cli>Inconsistent processes\u003C/li>\n\u003C/ul>\n\u003Cp>JB Hi-Fi Warranty Tracker solves this by:\u003C/p>\n\u003Cul>\n\u003Cli>Centralising all warranty data\u003C/li>\n\u003Cli>Providing structured workflows\u003C/li>\n\u003Cli>Improving traceability and accountability\u003C/li>\n\u003Cli>Reducing manual overhead\u003C/li>\n\u003C/ul>\n",skills:[{label:"javascript",color:"#f7df1e",description:"Uses the JavaScript programming language."},{label:"api",color:"#22c55e",description:"Uses an Application Programming Interface (API) endpoint."},{label:"php",color:"#777bb4",description:"Uses the PHP (Hypertext Preprocessor) programming language."},{label:"html",color:"#e34f26",description:"Uses HTML (HyperText Markup Language) to display content."},{label:"css",color:"#264de4",description:"Uses CSS (Cascading Style Sheets) for content styling."}],hero:{src:"/img/jb-hifi-warranty/hero.jpg",alt:"JB-HiFi-Warranty"},gallery:[{src:"/img/jb-hifi-warranty/1.png",desc:"Application dashboard"}],links:{repo:"https://github.com/mattkrins/JB-HiFi-Warranty"},date:2016,status:"Discontinued"}},uses:{params:["slug"]}}],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+node_modules
+
+# Output
+/.svelte-kit
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vite
+vite.config.ts.timestamp-*
