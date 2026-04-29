@@ -11,10 +11,47 @@
 	let socialsOpen = $state(false);
 	let dropdownEl = $state<HTMLDivElement | null>(null);
 
-	const copyEmail = () => {
-		navigator.clipboard.writeText(atob("bWF0dGtyaW5zQGdtYWlsLmNvbQ=="));
+	const showEmailCopied = () => {
 		emailCopied = true;
 		setTimeout(() => { emailCopied = false; }, 2000);
+	};
+
+	const fallbackCopyText = (text: string) => {
+		const textarea = document.createElement('textarea');
+		textarea.value = text;
+		textarea.setAttribute('readonly', '');
+		textarea.style.position = 'fixed';
+		textarea.style.opacity = '0';
+		textarea.style.pointerEvents = 'none';
+
+		document.body.appendChild(textarea);
+		textarea.select();
+
+		const copied = document.execCommand('copy');
+		document.body.removeChild(textarea);
+
+		return copied;
+	};
+
+	const copyEmail = async () => {
+		const email = atob("bWF0dGtyaW5zQGdtYWlsLmNvbQ==");
+
+		try {
+			if (navigator.clipboard?.writeText && window.isSecureContext) {
+				await navigator.clipboard.writeText(email);
+				showEmailCopied();
+				return;
+			}
+		} catch {
+			// Fall through to legacy copy support below.
+		}
+
+		if (fallbackCopyText(email)) {
+			showEmailCopied();
+			return;
+		}
+
+		window.location.href = `mailto:${email}`;
 	};
 
 	$effect(() => {
