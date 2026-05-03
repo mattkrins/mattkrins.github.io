@@ -4,7 +4,7 @@ summary: A TypeScript monorepo that synchronises Edval timetable exports and CAS
 date: 2026
 status: Active
 hero: /img/edval-canvas-bridge/hero.jpg
-skills: [typescript, react, rest, api, gui, cli, automation]
+skills: [typescript, react, rest, api, gui, cli, automation, ai]
 links:
   repo: https://github.com/mattkrins/edval-canvas-bridge
 gallery:
@@ -165,3 +165,9 @@ It shows the ability to:
 This project is a strong example of building practical education-focused infrastructure with both backend automation and operator-friendly tooling.
 
 Instead of solving the problem with a single script, Edval Canvas Bridge grows into a full platform for configuring, reviewing, running, and scheduling synchronisation between Edval, CASES21, and Canvas.
+
+## AI Disclosure
+
+AI was used to help build parts of the GUI side of the application.
+
+The sync class, CLI and core synchronisation logic were built by hand.
