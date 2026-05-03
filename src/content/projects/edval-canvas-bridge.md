@@ -4,7 +4,7 @@ summary: A TypeScript monorepo that synchronises Edval timetable exports and CAS
 date: 2026
 status: Active
 hero: /img/edval-canvas-bridge/hero.jpg
-skills: [typescript, react, rest, api, gui, cli, automation, ai]
+skills: [typescript, react, rest, api, gui, cli, automation, ai, powershell]
 links:
   repo: https://github.com/mattkrins/edval-canvas-bridge
 gallery:
