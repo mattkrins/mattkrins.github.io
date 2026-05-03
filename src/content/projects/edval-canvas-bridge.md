@@ -5,6 +5,8 @@ date: 2026
 status: Active
 hero: /img/edval-canvas-bridge/hero.jpg
 skills: [typescript, react, rest, api, gui, cli, automation]
+links:
+  repo: https://github.com/mattkrins/edval-canvas-bridge
 gallery:
   - src: /img/edval-canvas-bridge/dashboard.jpg
     desc: Admin dashboard
