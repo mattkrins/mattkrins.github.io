@@ -7,6 +7,7 @@ hero: /og-card.jpg
 skills: [svelte, typescript, html, css, ai, gui]
 links:
   live: https://mattkrins.com
+  repo: https://github.com/mattkrins/mattkrins.github.io
 ---
 
 ## Overview
