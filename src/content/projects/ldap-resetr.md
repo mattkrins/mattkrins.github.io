@@ -3,6 +3,7 @@ title: ldap-resetr
 summary: A simple tool to reset/generate a random password for an ldap user and print to a thermal receipt printer, built using Electron and React.
 date: 2021
 status: Discontinued
+affiliation: Bytewize IT Consulting
 hero: /img/ldap-resetr/hero.jpg
 skills: [react, javascript, api, gui]
 links:

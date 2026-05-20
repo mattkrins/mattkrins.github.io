@@ -3,6 +3,7 @@ title: EduPass Reader
 summary: Web application for authenticated users to retrieve, reveal, and copy their EduPass credentials after signing in with their Microsoft Azure account.
 date: 2024
 status: Discontinued
+affiliation: Bytewize IT Consulting
 hero: /img/edupass-reader/hero.jpg
 skills: [react, javascript, api, gui, docker]
 gallery:

@@ -58,7 +58,7 @@
 		{/if}
 
 		<aside class="sidebar">
-			{#if project.date || project.status}
+			{#if project.date || project.status || project.affiliation}
 				<div class="sidebar-section">
 					<p class="sidebar-section-label">Details</p>
 					{#if project.status}
@@ -78,6 +78,12 @@
 						<p class="meta">
 							<span class="meta-label">Date</span>
 							<span class="meta-badge">{project.date}</span>
+						</p>
+					{/if}
+					{#if project.affiliation}
+						<p class="meta meta-affiliation">
+							<span class="meta-label">Affiliation</span>
+							<span class="affiliation-value">{project.affiliation}</span>
 						</p>
 					{/if}
 				</div>
@@ -268,6 +274,32 @@
 		line-height: 1;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
+		white-space: nowrap;
+	}
+
+	.meta-affiliation {
+		display: block;
+	}
+
+	.meta-affiliation .meta-label {
+		display: block;
+		margin-bottom: 0.45rem;
+	}
+
+	.affiliation-value {
+		display: block;
+		width: 100%;
+		padding: 0.65rem 0.75rem;
+		border: 1px solid var(--border);
+		border-left: 2px solid rgba(196, 240, 90, 0.45);
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.025);
+		color: var(--fg);
+		font-size: 0.78rem;
+		line-height: 1.35;
+		letter-spacing: 0.03em;
+		text-transform: none;
+		overflow-wrap: anywhere;
 	}
 
 	.status-dot {

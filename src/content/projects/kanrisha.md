@@ -3,6 +3,7 @@ title: Kanrisha Class Manager
 summary: Built with Python Django, this personal class management application was a comprehensive solution for organizing and tracking classes, attendance, competencies, results, assessments, and more.
 date: 2020
 status: Discontinued
+affiliation: Box Hill Institute
 hero: /img/kanrisha/hero.jpg
 skills: [automation, javascript, python, powershell, html, css, gui]
 gallery:

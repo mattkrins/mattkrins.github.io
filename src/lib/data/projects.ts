@@ -15,6 +15,7 @@ interface ProjectFrontmatter {
   slug?: string;
   date?: string | number;
   status?: string;
+  affiliation?: string;
   hero: string;
   skills: string[];
   links?: { live?: string; repo?: string };
@@ -57,7 +58,8 @@ function buildProject(path: string, raw: string): Project {
     gallery: gallery?.length ? gallery : undefined,
     links: meta.links,
     date: meta.date,
-    status: meta.status?.trim()
+    status: meta.status?.trim(),
+    affiliation: meta.affiliation?.trim()
   };
 }
 
