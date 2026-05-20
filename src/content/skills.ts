@@ -5,6 +5,7 @@ export const skills: Record<string, SkillTag> = {
   automation: { label: 'automation', color: '#14b8a6', description: 'Uses tasks and workflows automatically based on triggers or schedules.' },
   cli:        { label: 'cli',        color: '#a855f7', description: 'Uses a Command-Line Interface (CLI) for user interaction.' },
   css:        { label: 'css',        color: '#264de4', description: 'Uses CSS (Cascading Style Sheets) for content styling.' },
+  docker:     { label: 'docker',     color: '#2496ed', description: 'Uses Docker for containerised builds or deployment.' },
   gui:        { label: 'gui',        color: '#0ea5e9', description: 'Uses an extensive Graphical User Interface (GUI) for user interaction.' },
   html:       { label: 'html',       color: '#e34f26', description: 'Uses HTML (HyperText Markup Language) to display content.' },
   javascript: { label: 'javascript', color: '#f7df1e', description: 'Uses the JavaScript programming language.' },
