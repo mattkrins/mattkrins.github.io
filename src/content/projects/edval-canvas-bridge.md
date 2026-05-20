@@ -13,6 +13,8 @@ gallery:
     desc: Admin dashboard
   - src: /img/edval-canvas-bridge/dashboard-mobile-view.jpg
     desc: Admin dashboard (mobile view)
+  - src: /img/edval-canvas-bridge/sync-in-progress.jpg
+    desc: Sync in-progress after confirming changes
   - src: /img/edval-canvas-bridge/config.jpg
     desc: Configuration editor
   - src: /img/edval-canvas-bridge/sync-review.jpg
