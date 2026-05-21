@@ -5,7 +5,7 @@ date: 2019
 status: Discontinued
 affiliation: Box Hill Institute
 hero: /img/config-collaborator/hero.jpg
-skills: [javascript, electron, ssh, html, css, gui, automation]
+skills: [javascript, electron, ssh, html, css, gui, automation, security]
 gallery:
   - src: /img/config-collaborator/logo.jpg
     desc: Config-Collaborator application logo

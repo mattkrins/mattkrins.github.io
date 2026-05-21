@@ -5,7 +5,7 @@ date: 2024
 status: Discontinued
 affiliation: Bytewize IT Consulting
 hero: /img/edupass-reader/hero.jpg
-skills: [react, javascript, api, gui, docker]
+skills: [react, javascript, api, gui, docker, security]
 gallery:
   - src: /img/edupass-reader/app-preview.jpg
     desc: EduPass credential access screen

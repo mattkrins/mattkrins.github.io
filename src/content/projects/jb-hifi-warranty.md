@@ -5,7 +5,7 @@ date: 2016
 status: Discontinued
 affiliation: Cool Bananas Services Pty Ltd
 hero: /img/jb-hifi-warranty/hero.jpg
-skills: [javascript, api, php, html, css]
+skills: [javascript, api, php, html, css, gui]
 links:
   repo: https://github.com/mattkrins/JB-HiFi-Warranty
 gallery:

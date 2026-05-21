@@ -4,7 +4,7 @@ summary: Chrome extension for encrypting and decrypting browser bookmarks with a
 date: 2017
 status: Active
 hero: /img/securemark/hero.jpg
-skills: [javascript, html, css, gui]
+skills: [javascript, html, css, gui, api, security]
 links:
   live: https://chromewebstore.google.com/detail/securemark/hmakgcpgllangepohipodfjjaeebnikf
   repo: https://github.com/mattkrins/SecureMark
