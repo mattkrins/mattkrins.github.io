@@ -17,6 +17,7 @@ export const skills: Record<string, SkillTag> = {
   python:     { label: 'python',     color: '#ffd43b', description: 'Uses the Python programming language.' },
   react:      { label: 'react',      color: '#61dafb', description: 'Uses the React.js front-end library for building user interfaces.' },
   rest:       { label: 'rest',       color: '#ef4444', description: 'Uses a RESTful (Representational State Transfer) API endpoint.' },
+  security:   { label: 'security',   color: '#dc2626', description: 'Involves authentication, encryption, access control, credential handling, or security-sensitive administration.' },
   ssh:        { label: 'ssh',        color: '#64748b', description: 'Uses Secure Shell (SSH) for remote command execution or administration.' },
   svelte:     { label: 'svelte',     color: '#ff3e00', description: 'Uses the Svelte framework for building reactive user interfaces.' },
   typescript: { label: 'typescript', color: '#3178c6', description: 'Uses the TypeScript programming language.' },

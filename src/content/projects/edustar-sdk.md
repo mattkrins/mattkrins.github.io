@@ -5,7 +5,7 @@ date: 2025
 status: Active
 affiliation: Bytewize IT Consulting
 hero: /img/edustar-sdk/hero.jpg
-skills: [typescript, automation, cli, api]
+skills: [typescript, automation, cli, api, security]
 links:
   repo: https://gitlab.edustar.tech/st01350/edustar-sdk
 gallery:

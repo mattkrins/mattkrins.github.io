@@ -5,7 +5,7 @@ date: 2021
 status: Discontinued
 affiliation: Bytewize IT Consulting
 hero: /img/ldap-resetr/hero.jpg
-skills: [react, javascript, api, electron, gui]
+skills: [react, javascript, api, electron, gui, security]
 links:
   repo: https://github.com/Warragul-Regional-College/ldap-resetr
 gallery:

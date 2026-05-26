@@ -5,7 +5,7 @@ date: 2021
 status: Discontinued
 affiliation: Bytewize IT Consulting
 hero: /img/snipe-loaner/hero.jpg
-skills: [react, javascript, rest, api, gui, electron, automation]
+skills: [react, javascript, rest, api, gui, electron, automation, security]
 gallery:
   - src: /img/snipe-loaner/ldap-login.jpg
     desc: LDAP administrator login

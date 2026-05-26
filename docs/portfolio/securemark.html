@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#c4f05a" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link href="../_app/immutable/entry/start.DzEhGs-K.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/r-1OI3pC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BBVsvCfH.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.K7m2oJZj.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DXLwiZ0H.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.7q4GJzzn.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/4.CTzZzW3a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/pNO4PUEx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Brct2Pn7.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/XzGo11aA.js" rel="modulepreload">
+		<!--15ehqgt--><meta name="description" content="Chrome extension for encrypting and decrypting browser bookmarks with a password, using the Chrome bookmarks API and CryptoJS AES."/> <meta property="og:title" content="SecureMark — Matt Krins"/> <meta property="og:description" content="Chrome extension for encrypting and decrypting browser bookmarks with a password, using the Chrome bookmarks API and CryptoJS AES."/> <meta property="og:image" content="/img/securemark/hero.jpg"/> <link rel="canonical" href="https://mattkrins.com/portfolio/securemark"/><!----><title>SecureMark — Matt Krins</title>
+		<link href="../_app/immutable/assets/0.BUHmNOF9.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Tooltip.87K-KfYa.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Icon.CMdpMAir.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/Breadcrumbs.-iJrWxRc.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/4.DjRPbNow.css" rel="stylesheet">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[0--><!--[--><!--[-1--><!--]--> <!--[-1--><!--]--> <div class="glow glow--green svelte-dwy068" aria-hidden="true"></div> <div class="glow glow--blue svelte-dwy068" aria-hidden="true"></div> <div class="grid-bg svelte-dwy068" aria-hidden="true"></div> <div class="grain svelte-dwy068" aria-hidden="true"></div><!----> <!--[--><main class="container svelte-15ehqgt"><nav aria-label="Breadcrumb" class="breadcrumbs svelte-1jovwxm"><ol class="svelte-1jovwxm"><!--[--><li class="svelte-1jovwxm"><!--[0--><a href="../" class="svelte-1jovwxm">home</a><!--]--> <!--[0--><span class="sep svelte-1jovwxm" aria-hidden="true">/</span><!--]--></li><li class="svelte-1jovwxm"><!--[0--><a href="../portfolio" class="svelte-1jovwxm">portfolio</a><!--]--> <!--[0--><span class="sep svelte-1jovwxm" aria-hidden="true">/</span><!--]--></li><li class="svelte-1jovwxm"><!--[-1--><span aria-current="page" class="svelte-1jovwxm">securemark</span><!--]--> <!--[-1--><!--]--></li><!--]--></ol></nav><!----> <section class="header svelte-15ehqgt"><p class="label svelte-15ehqgt">// project</p> <h1 class="heading svelte-15ehqgt">SecureMark</h1></section> <section class="hero svelte-15ehqgt"><img src="/img/securemark/hero.jpg" alt="SecureMark" class="svelte-15ehqgt"/></section> <div class="body svelte-15ehqgt"><!--[0--><section class="description svelte-15ehqgt"><!----><h2>Overview</h2>
+<p>SecureMark is a Chrome extension for encrypting and decrypting Chrome bookmarks.</p>
+<p>It was released in 2017 and published on the Chrome Web Store as a bookmark encryption tool. The extension allows users to encrypt their bookmark titles and URLs with a password, then decrypt them later through the options page.</p>
+<p>The core idea is simple: protect saved bookmarks from casual inspection by replacing readable bookmark data with encrypted values, while still allowing the user to restore the original bookmarks if they know the password.</p>
+<h2>Key Features</h2>
+<h3>Bookmark Encryption</h3>
+<p>SecureMark walks through the Chrome bookmark tree and encrypts editable bookmarks using CryptoJS AES.</p>
+<p>Both bookmark titles and URLs are processed. Encrypted values are marked with a recognisable suffix so the extension can detect whether a bookmark has already been encrypted.</p>
+<h3>Bookmark Decryption</h3>
+<p>The options page provides a decrypt workflow where the user enters the same password used for encryption.</p>
+<p>SecureMark attempts to decrypt bookmark titles and URLs, verifies the decrypted payload with a checksum marker, and writes the readable values back to Chrome bookmarks.</p>
+<h3>Extension Button Workflow</h3>
+<p>The extension can store a password temporarily so the browser action button can trigger encryption from the toolbar.</p>
+<p>The toolbar icon and badge update while encryption or decryption is running, giving the user progress feedback during the bookmark update process.</p>
+<h3>Options Page</h3>
+<p>The options page handles:</p>
+<ul>
+<li>password entry</li>
+<li>password confirmation</li>
+<li>password strength feedback</li>
+<li>encrypt action</li>
+<li>decrypt action</li>
+<li>password reset</li>
+<li>warning/help modal content</li>
+</ul>
+<p>This gives the extension a more complete workflow than a one-click script, while keeping the user-facing surface area small.</p>
+<h3>Web Worker Processing</h3>
+<p>Bookmark processing is handled through a Web Worker.</p>
+<p>The worker receives the flattened bookmark list, encrypts or decrypts each editable bookmark, posts updates back to the main extension context, and reports progress as it works through the tree.</p>
+<h2>Architecture</h2>
+<pre><code class="language-text">Chrome Bookmarks API
+    -&gt;
+Flatten bookmark tree
+    -&gt;
+Web Worker
+    -&gt;
+CryptoJS AES encrypt/decrypt
+    -&gt;
+chrome.bookmarks.update
+</code></pre>
+<p>SecureMark is a Manifest V2 Chrome extension with:</p>
+<ul>
+<li>a browser action popup</li>
+<li>an options page</li>
+<li><code>bookmarks</code> permission</li>
+<li>bundled JavaScript, CSS, fonts, and image assets</li>
+</ul>
+<h2>Technical Highlights</h2>
+<h3>Chrome Extension APIs</h3>
+<p>The extension uses the Chrome bookmarks API to read the bookmark tree and update individual bookmark entries.</p>
+<p>It avoids external services; the workflow happens locally in the browser extension context.</p>
+<h3>Encrypted Bookmark Representation</h3>
+<p>Encrypted bookmark text is converted through CryptoJS AES, Base64, and hex encoding before being written back into the bookmark title or URL field.</p>
+<p>For encrypted URLs, the extension prefixes the encrypted value with <code>http://</code> so Chrome accepts it as a bookmark URL.</p>
+<h3>Password-Based Recovery</h3>
+<p>SecureMark does not provide a recovery path without the original password.</p>
+<p>The Chrome Web Store description explicitly warns that encrypted bookmarks cannot be restored without the password, which is an important design constraint for a tool that modifies the user&#39;s actual bookmark data.</p>
+<h3>Progress Feedback</h3>
+<p>The extension updates the browser action badge and options page progress UI while processing bookmarks.</p>
+<p>This matters because bookmark libraries can be large, and the operation touches many individual bookmark entries.</p>
+<h2>Problem Solved</h2>
+<p>Chrome bookmarks are normally readable through the browser UI and local profile data.</p>
+<p>SecureMark provides a lightweight privacy layer for users who want to obscure bookmark names and destinations without moving to a separate bookmark manager.</p>
+<p>It is a compact example of building a real browser extension around:</p>
+<ul>
+<li>browser permissions</li>
+<li>bookmark traversal</li>
+<li>client-side encryption</li>
+<li>destructive/reversible data transformation</li>
+<li>user warnings and recovery constraints</li>
+</ul>
+<h2>Tech Stack</h2>
+<ul>
+<li>JavaScript</li>
+<li>Chrome Extensions Manifest V2</li>
+<li>Chrome bookmarks API</li>
+<li>CryptoJS</li>
+<li>HTML</li>
+<li>CSS</li>
+<li>jQuery</li>
+</ul>
+<!----></section><!--]--> <aside class="sidebar svelte-15ehqgt"><!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Details</p> <!--[0--><p class="meta svelte-15ehqgt"><span class="meta-label svelte-15ehqgt">Status</span> <span class="status-badge svelte-15ehqgt status-active"><span class="status-dot svelte-15ehqgt" aria-hidden="true"></span> Active</span></p><!--]--> <!--[0--><p class="meta svelte-15ehqgt"><span class="meta-label svelte-15ehqgt">Date</span> <span class="meta-badge svelte-15ehqgt">2017</span></p><!--]--> <!--[-1--><!--]--></div><!--]--> <!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Skills</p> <div class="skills svelte-15ehqgt"><!--[--><!--$s1--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=javascript" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #f7df1e" aria-hidden="true"></span><!--]--> <span>javascript</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s2--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=html" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #e34f26" aria-hidden="true"></span><!--]--> <span>html</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s3--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=css" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #264de4" aria-hidden="true"></span><!--]--> <span>css</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s4--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=gui" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #0ea5e9" aria-hidden="true"></span><!--]--> <span>gui</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s5--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=api" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #22c55e" aria-hidden="true"></span><!--]--> <span>api</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--$s6--><!--[0--><span class="tt-wrap svelte-11extwn" role="group"><!--[0--><a href="../portfolio?filter=security" class="role-tag svelte-f9myr8"><!--[0--><span class="role-tag-dot svelte-f9myr8" style="--tag-color: #dc2626" aria-hidden="true"></span><!--]--> <span>security</span></a><!--]--><!----> <!--[-1--><!--]--></span><!--]--><!--]--></div></div><!--]--> <!--[0--><div class="sidebar-section"><p class="sidebar-section-label svelte-15ehqgt">Links</p> <div class="links svelte-15ehqgt"><!--[0--><!--[-1--><a href="https://chromewebstore.google.com/detail/securemark/hmakgcpgllangepohipodfjjaeebnikf" target="_blank" rel="external noopener noreferrer" class="btn btn-primary svelte-15ehqgt"><!--[-1--><!--]--><!----> <span>Live</span></a><!--]--><!--]--> <!--[0--><!--[-1--><a href="https://github.com/mattkrins/SecureMark" target="_blank" rel="external noopener noreferrer" class="btn btn-secondary svelte-15ehqgt"><!--[-1--><!--]--><!----> <span>GitHub</span></a><!--]--><!--]--></div></div><!--]--></aside></div> <!--[0--><section class="gallery svelte-15ehqgt"><h2 class="section-heading svelte-15ehqgt">Gallery</h2> <div class="gallery-grid svelte-15ehqgt"><!--[--><figure class="gallery-item svelte-15ehqgt" style="--i: 0"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open SecureMark branding in lightbox"><img src="/img/securemark/branding.jpg" alt="SecureMark branding" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">SecureMark branding</figcaption><!--]--></figure><figure class="gallery-item svelte-15ehqgt" style="--i: 1"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Password setup and encryption options in lightbox"><img src="/img/securemark/setup-screen.jpg" alt="Password setup and encryption options" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Password setup and encryption options</figcaption><!--]--></figure><figure class="gallery-item svelte-15ehqgt" style="--i: 2"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Encrypted Chrome bookmarks in lightbox"><img src="/img/securemark/bookmarks-encrypted.jpg" alt="Encrypted Chrome bookmarks" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Encrypted Chrome bookmarks</figcaption><!--]--></figure><figure class="gallery-item svelte-15ehqgt" style="--i: 3"><button type="button" class="gallery-btn svelte-15ehqgt" aria-label="Open Restored Chrome bookmarks after decryption in lightbox"><img src="/img/securemark/bookmarks-decrypted.jpg" alt="Restored Chrome bookmarks after decryption" loading="lazy" class="svelte-15ehqgt"/></button> <!--[0--><figcaption class="svelte-15ehqgt">Restored Chrome bookmarks after decryption</figcaption><!--]--></figure><!--]--></div></section> <!--[-1--><!--]--><!----><!--]--> <footer class="footer svelte-15ehqgt"><a href="../portfolio" class="back-link svelte-15ehqgt">← Back to portfolio</a></footer></main><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ze7ce2 = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.DzEhGs-K.js"),
+						import("../_app/immutable/entry/app.K7m2oJZj.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,{type:"data",data:{project:{slug:"securemark",title:"SecureMark",summary:"Chrome extension for encrypting and decrypting browser bookmarks with a password, using the Chrome bookmarks API and CryptoJS AES.",descriptionHtml:"\u003Ch2>Overview\u003C/h2>\n\u003Cp>SecureMark is a Chrome extension for encrypting and decrypting Chrome bookmarks.\u003C/p>\n\u003Cp>It was released in 2017 and published on the Chrome Web Store as a bookmark encryption tool. The extension allows users to encrypt their bookmark titles and URLs with a password, then decrypt them later through the options page.\u003C/p>\n\u003Cp>The core idea is simple: protect saved bookmarks from casual inspection by replacing readable bookmark data with encrypted values, while still allowing the user to restore the original bookmarks if they know the password.\u003C/p>\n\u003Ch2>Key Features\u003C/h2>\n\u003Ch3>Bookmark Encryption\u003C/h3>\n\u003Cp>SecureMark walks through the Chrome bookmark tree and encrypts editable bookmarks using CryptoJS AES.\u003C/p>\n\u003Cp>Both bookmark titles and URLs are processed. Encrypted values are marked with a recognisable suffix so the extension can detect whether a bookmark has already been encrypted.\u003C/p>\n\u003Ch3>Bookmark Decryption\u003C/h3>\n\u003Cp>The options page provides a decrypt workflow where the user enters the same password used for encryption.\u003C/p>\n\u003Cp>SecureMark attempts to decrypt bookmark titles and URLs, verifies the decrypted payload with a checksum marker, and writes the readable values back to Chrome bookmarks.\u003C/p>\n\u003Ch3>Extension Button Workflow\u003C/h3>\n\u003Cp>The extension can store a password temporarily so the browser action button can trigger encryption from the toolbar.\u003C/p>\n\u003Cp>The toolbar icon and badge update while encryption or decryption is running, giving the user progress feedback during the bookmark update process.\u003C/p>\n\u003Ch3>Options Page\u003C/h3>\n\u003Cp>The options page handles:\u003C/p>\n\u003Cul>\n\u003Cli>password entry\u003C/li>\n\u003Cli>password confirmation\u003C/li>\n\u003Cli>password strength feedback\u003C/li>\n\u003Cli>encrypt action\u003C/li>\n\u003Cli>decrypt action\u003C/li>\n\u003Cli>password reset\u003C/li>\n\u003Cli>warning/help modal content\u003C/li>\n\u003C/ul>\n\u003Cp>This gives the extension a more complete workflow than a one-click script, while keeping the user-facing surface area small.\u003C/p>\n\u003Ch3>Web Worker Processing\u003C/h3>\n\u003Cp>Bookmark processing is handled through a Web Worker.\u003C/p>\n\u003Cp>The worker receives the flattened bookmark list, encrypts or decrypts each editable bookmark, posts updates back to the main extension context, and reports progress as it works through the tree.\u003C/p>\n\u003Ch2>Architecture\u003C/h2>\n\u003Cpre>\u003Ccode class=\"language-text\">Chrome Bookmarks API\n    -&gt;\nFlatten bookmark tree\n    -&gt;\nWeb Worker\n    -&gt;\nCryptoJS AES encrypt/decrypt\n    -&gt;\nchrome.bookmarks.update\n\u003C/code>\u003C/pre>\n\u003Cp>SecureMark is a Manifest V2 Chrome extension with:\u003C/p>\n\u003Cul>\n\u003Cli>a browser action popup\u003C/li>\n\u003Cli>an options page\u003C/li>\n\u003Cli>\u003Ccode>bookmarks\u003C/code> permission\u003C/li>\n\u003Cli>bundled JavaScript, CSS, fonts, and image assets\u003C/li>\n\u003C/ul>\n\u003Ch2>Technical Highlights\u003C/h2>\n\u003Ch3>Chrome Extension APIs\u003C/h3>\n\u003Cp>The extension uses the Chrome bookmarks API to read the bookmark tree and update individual bookmark entries.\u003C/p>\n\u003Cp>It avoids external services; the workflow happens locally in the browser extension context.\u003C/p>\n\u003Ch3>Encrypted Bookmark Representation\u003C/h3>\n\u003Cp>Encrypted bookmark text is converted through CryptoJS AES, Base64, and hex encoding before being written back into the bookmark title or URL field.\u003C/p>\n\u003Cp>For encrypted URLs, the extension prefixes the encrypted value with \u003Ccode>http://\u003C/code> so Chrome accepts it as a bookmark URL.\u003C/p>\n\u003Ch3>Password-Based Recovery\u003C/h3>\n\u003Cp>SecureMark does not provide a recovery path without the original password.\u003C/p>\n\u003Cp>The Chrome Web Store description explicitly warns that encrypted bookmarks cannot be restored without the password, which is an important design constraint for a tool that modifies the user&#39;s actual bookmark data.\u003C/p>\n\u003Ch3>Progress Feedback\u003C/h3>\n\u003Cp>The extension updates the browser action badge and options page progress UI while processing bookmarks.\u003C/p>\n\u003Cp>This matters because bookmark libraries can be large, and the operation touches many individual bookmark entries.\u003C/p>\n\u003Ch2>Problem Solved\u003C/h2>\n\u003Cp>Chrome bookmarks are normally readable through the browser UI and local profile data.\u003C/p>\n\u003Cp>SecureMark provides a lightweight privacy layer for users who want to obscure bookmark names and destinations without moving to a separate bookmark manager.\u003C/p>\n\u003Cp>It is a compact example of building a real browser extension around:\u003C/p>\n\u003Cul>\n\u003Cli>browser permissions\u003C/li>\n\u003Cli>bookmark traversal\u003C/li>\n\u003Cli>client-side encryption\u003C/li>\n\u003Cli>destructive/reversible data transformation\u003C/li>\n\u003Cli>user warnings and recovery constraints\u003C/li>\n\u003C/ul>\n\u003Ch2>Tech Stack\u003C/h2>\n\u003Cul>\n\u003Cli>JavaScript\u003C/li>\n\u003Cli>Chrome Extensions Manifest V2\u003C/li>\n\u003Cli>Chrome bookmarks API\u003C/li>\n\u003Cli>CryptoJS\u003C/li>\n\u003Cli>HTML\u003C/li>\n\u003Cli>CSS\u003C/li>\n\u003Cli>jQuery\u003C/li>\n\u003C/ul>\n",skills:[{label:"javascript",color:"#f7df1e",description:"Uses the JavaScript programming language."},{label:"html",color:"#e34f26",description:"Uses HTML (HyperText Markup Language) to display content."},{label:"css",color:"#264de4",description:"Uses CSS (Cascading Style Sheets) for content styling."},{label:"gui",color:"#0ea5e9",description:"Uses an extensive Graphical User Interface (GUI) for user interaction."},{label:"api",color:"#22c55e",description:"Uses an Application Programming Interface (API) endpoint."},{label:"security",color:"#dc2626",description:"Involves authentication, encryption, access control, credential handling, or security-sensitive administration."}],hero:{src:"/img/securemark/hero.jpg",alt:"SecureMark"},gallery:[{src:"/img/securemark/branding.jpg",desc:"SecureMark branding"},{src:"/img/securemark/setup-screen.jpg",desc:"Password setup and encryption options"},{src:"/img/securemark/bookmarks-encrypted.jpg",desc:"Encrypted Chrome bookmarks"},{src:"/img/securemark/bookmarks-decrypted.jpg",desc:"Restored Chrome bookmarks after decryption"}],links:{live:"https://chromewebstore.google.com/detail/securemark/hmakgcpgllangepohipodfjjaeebnikf",repo:"https://github.com/mattkrins/SecureMark"},date:2017,status:"Active",affiliation:void 0}},uses:{params:["slug"]}}],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

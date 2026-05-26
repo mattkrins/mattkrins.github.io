@@ -5,7 +5,7 @@ date: 2026
 status: Active
 affiliation: Bytewize IT Consulting
 hero: /img/edval-canvas-bridge/hero.jpg
-skills: [typescript, react, rest, api, gui, cli, automation, ai, powershell]
+skills: [typescript, react, rest, api, gui, cli, automation, ai, powershell, security]
 links:
   repo: https://github.com/mattkrins/edval-canvas-bridge
 gallery:
