@@ -97,6 +97,10 @@ Wrote small rendering and UI utility layers for screen scaling, 3D2D labels, cur
 
 ## Technical Highlights
 
+### TypeScript-to-Lua Tooling
+- Built in TypeScript using [TypeScriptToLua](https://github.com/TypeScriptToLua/TypeScriptToLua) for compilation to Lua
+- Used [gmod-typescript](https://github.com/lolleko/gmod-typescript) to target Garry's Mod cleanly from a TypeScript codebase
+
 ### Camera Choreography
 - Smooth interpolation between positions, angles, and zoom levels
 - Reusable helpers for cinematic framing and scene transitions
