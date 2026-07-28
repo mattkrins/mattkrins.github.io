@@ -35,7 +35,7 @@
 		"@fontsource/inter": "^5.2.8",
 		"@iconify-json/lucide": "^1.2.102",
 		"@iconify/svelte": "^5.2.1",
-		"js-yaml": "^4.1.1",
+		"js-yaml": "^4.3.0",
 		"marked": "^18.0.2"
 	}
 }
