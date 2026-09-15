@@ -20,4 +20,5 @@ export interface Project {
   links?: { live?: string; repo?: string };
   date?: string | number;
   status?: string;
+  affiliation?: string;
 }

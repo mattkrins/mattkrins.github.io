@@ -3,7 +3,7 @@ title: Portfolio
 summary: A statically generated portfolio website built with SvelteKit to present projects, skills, and technical experience through a fast, content-driven, and maintainable personal web presence.
 date: 2026
 status: Active
-hero: /og-card.jpg
+hero: /img/mattkrins.com/hero.jpg
 skills: [svelte, typescript, html, css, ai, gui]
 links:
   live: https://mattkrins.com

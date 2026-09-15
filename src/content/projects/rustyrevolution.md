@@ -3,6 +3,7 @@ title: Rusty Revolution Website
 summary: Website designed and built for the Rusty Revolution game community website for the Rusty Hearts private server project.
 date: 2014
 status: Active
+affiliation: Rusty Revolution
 hero: /img/rustyrevolution/hero.jpg
 skills: [javascript, php, html, css]
 links:

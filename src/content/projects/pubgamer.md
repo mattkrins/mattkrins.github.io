@@ -3,6 +3,7 @@ title: PubGamer
 summary: Sole web developer for the revived PubGamer online gaming community, building and maintaining its community websites, phpBB forum theme, branding, file hosting tools, and game server hosting flows between 2009 and 2012.
 date: 2009 - 2012
 status: Discontinued
+affiliation: PubGamer
 hero: /img/pubgamer/hero.jpg
 skills: [html, css, javascript, php, gui, lua]
 gallery:

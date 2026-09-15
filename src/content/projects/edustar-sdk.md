@@ -3,8 +3,9 @@ title: eduSTAR STMC SDK
 summary: A robust TypeScript Node.js client for the eduSTAR School Technology Management Centre API, supporting both NTLM and form-based authentication.
 date: 2025
 status: Active
+affiliation: Bytewize IT Consulting
 hero: /img/edustar-sdk/hero.jpg
-skills: [typescript, automation, cli, api]
+skills: [typescript, automation, cli, api, security]
 links:
   repo: https://gitlab.edustar.tech/st01350/edustar-sdk
 gallery:

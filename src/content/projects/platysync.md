@@ -3,6 +3,7 @@ title: PlatySync
 summary: Open-source automation application designed for turning structured data sources, such as CSV files, into repeatable actions across systems like LDAP, file systems, and document generation workflows.
 date: 2023
 status: Active
+affiliation: Bytewize IT Consulting
 hero: /img/platysync/hero.jpg
 skills: [typescript, automation, react, rest, api, gui]
 links:

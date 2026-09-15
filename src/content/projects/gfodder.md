@@ -3,6 +3,7 @@ title: GFodder
 summary: A custom multiplayer gamemode developed for the Garry's Mod Game Coding Competition (GCC) 2017. Features a first-person cooking environment where players must prepare recipes under time pressure and environmental hazards.
 date: 2017
 status: Active
+affiliation: Discord Studios ltd
 hero: /img/gfodder/hero.jpg
 skills: [lua]
 ---
